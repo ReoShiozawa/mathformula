@@ -1,0 +1,420 @@
+/* ==============================================
+   高校数学公式集のスタイルシート（CSS）
+   見た目やレイアウトを制御するファイル
+   ============================================== */
+
+/**
+ * ユニバーサルセレクタ（*）
+ * 全ての要素に適用される基本設定
+ */
+* {
+    margin: 0;              /* 外側の余白をゼロに */
+    padding: 0;             /* 内側の余白をゼロに */
+    box-sizing: border-box; /* 要素のサイズ計算方法（幅と高さにpaddingとborderを含む） */
+}
+
+/**
+ * :root（ルート要素）
+ * CSS変数を定義する場所
+ * var(--変数名) で使用できる
+ */
+:root {
+    /* カラーパレット（色の設定） */
+    --primary-color: #2563eb;       /* メインの青色 */
+    --secondary-color: #1e40af;     /* 濃い青色 */
+    --accent-color: #3b82f6;        /* アクセントの青色 */
+    --background-color: #f8fafc;    /* 背景色（薄いグレー） */
+    --card-background: #ffffff;     /* カードの背景色（白） */
+    --text-color: #1e293b;          /* 文字色（濃いグレー） */
+    --border-color: #e2e8f0;        /* 枠線の色（薄いグレー） */
+    --derivation-bg: #fef3c7;       /* 導出部分の背景色（薄い黄色） */
+    --derivation-border: #fbbf24;   /* 導出部分の枠線色（オレンジ） */
+    
+    /* 影の設定（box-shadow用） */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/**
+ * body要素
+ * ページ全体の基本スタイル
+ */
+body {
+    /* フォントファミリー（優先順位順に指定） */
+    font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+    background-color: var(--background-color); /* 背景色 */
+    color: var(--text-color);                  /* 文字色 */
+    line-height: 1.8;                          /* 行間（1.8倍） */
+}
+
+/* ===== ヘッダー部分のスタイル ===== */
+header {
+    /* グラデーション背景（左上から右下に向かって色が変化） */
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;              /* 文字色を白に */
+    text-align: center;        /* テキストを中央揃え */
+    padding: 2.5rem 1rem;      /* 内側の余白（上下2.5rem、左右1rem） */
+    box-shadow: var(--shadow-lg); /* 大きめの影をつける */
+}
+
+header h1 {
+    font-size: 2.5rem;         /* フォントサイズ（2.5rem = 40px相当） */
+    margin-bottom: 0.5rem;     /* 下の余白 */
+    font-weight: 700;          /* 太字（700 = bold） */
+}
+
+header p {
+    font-size: 1.1rem;         /* 少し大きめの文字 */
+    opacity: 0.95;             /* 透明度（0.95 = 95%の不透明度） */
+}
+
+/* ===== ナビゲーション（メニュー）のスタイル ===== */
+nav {
+    position: sticky;          /* スクロールしても上部に固定される */
+    top: 0;                    /* 画面の一番上に配置 */
+    background: white;         /* 背景色を白に */
+    border-bottom: 2px solid var(--border-color); /* 下に枠線 */
+    padding: 1rem;             /* 内側の余白 */
+    box-shadow: var(--shadow); /* 影をつける */
+    z-index: 100;              /* 重ね順（100 = 他の要素より前面） */
+}
+
+.nav-container {
+    display: flex;             /* フレックスボックス（横並びレイアウト） */
+    justify-content: center;   /* 中央揃え */
+    gap: 1rem;                 /* 要素間の間隔 */
+    flex-wrap: wrap;           /* 画面が狭いときは折り返す */
+    margin-bottom: 1rem;       /* 下の余白 */
+}
+
+.nav-link {
+    padding: 0.75rem 1.5rem;   /* 内側の余白（上下0.75rem、左右1.5rem） */
+    background: var(--primary-color); /* 背景色（青） */
+    color: white;              /* 文字色（白） */
+    text-decoration: none;     /* 下線を消す */
+    border-radius: 8px;        /* 角を丸く（8px） */
+    font-weight: 600;          /* 文字を太く（600 = semi-bold） */
+    transition: all 0.3s ease; /* 変化をなめらかに（0.3秒） */
+    box-shadow: var(--shadow); /* 影をつける */
+}
+
+/**
+ * :hoverは、マウスを重ねたときのスタイル
+ */
+.nav-link:hover {
+    background: var(--secondary-color); /* 背景色を濃い青に */
+    transform: translateY(-2px);        /* 2px上に浮かせる */
+    box-shadow: var(--shadow-lg);       /* 影を大きくする */
+}
+
+.search-container {
+    display: flex;             /* フレックスボックス */
+    justify-content: center;   /* 中央揃え */
+    margin-top: 0.5rem;        /* 上の余白 */
+}
+
+#searchBox {
+    width: 100%;               /* 幅100%（親要素いっぱい） */
+    max-width: 500px;          /* 最大幅500px */
+    padding: 0.75rem 1rem;     /* 内側の余白 */
+    border: 2px solid var(--border-color); /* 枠線 */
+    border-radius: 8px;        /* 角を丸く */
+    font-size: 1rem;           /* フォントサイズ */
+    transition: border-color 0.3s ease; /* 枠線の色変化をなめらかに */
+}
+
+/**
+ * :focusは、要素にフォーカスがあたったとき（クリックして選択状態）
+ */
+#searchBox:focus {
+    outline: none;                      /* ブラウザ標準の青い枠線を消す */
+    border-color: var(--primary-color); /* 枠線の色を青に変更 */
+}
+
+/* ===== メインコンテンツ部分 ===== */
+main {
+    max-width: 1200px;         /* 最大幅1200px */
+    margin: 2rem auto;         /* 上下2rem、左右は自動（中央揃え） */
+    padding: 0 1rem;           /* 左右に1remの余白 */
+}
+
+.math-section {
+    margin-bottom: 4rem;       /* セクション間の余白 */
+    scroll-margin-top: 120px;  /* スクロール時の上部余白（ナビゲーションに隠れないように） */
+}
+
+.math-section h2 {
+    font-size: 2.2rem;         /* 大きな見出し */
+    color: var(--primary-color); /* 青色 */
+    margin-bottom: 2rem;       /* 下の余白 */
+    padding-bottom: 0.75rem;   /* 下の内側余白 */
+    border-bottom: 3px solid var(--primary-color); /* 下に太い青線 */
+}
+
+.category {
+    margin-bottom: 3rem;       /* カテゴリ間の余白 */
+}
+
+.category h3 {
+    font-size: 1.8rem;         /* 見出しサイズ */
+    color: var(--secondary-color); /* 濃い青 */
+    margin-bottom: 1.5rem;     /* 下の余白 */
+    padding-left: 0.5rem;      /* 左の内側余白 */
+    border-left: 4px solid var(--accent-color); /* 左に青い線 */
+}
+
+/* ===== 公式カードのスタイル ===== */
+.formula-card {
+    background: var(--card-background); /* 背景色（白） */
+    border-radius: 12px;                /* 角を丸く */
+    padding: 1.5rem;                    /* 内側の余白 */
+    margin-bottom: 1.5rem;              /* カード間の余白 */
+    box-shadow: var(--shadow);          /* 影をつける */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 変化をなめらかに */
+    border: 1px solid var(--border-color); /* 薄い枠線 */
+}
+
+/**
+ * カードにマウスを重ねたときの効果
+ */
+.formula-card:hover {
+    transform: translateY(-3px);  /* 3px上に浮かせる */
+    box-shadow: var(--shadow-lg); /* 影を大きくする */
+}
+
+.formula-card h4 {
+    font-size: 1.4rem;            /* 見出しサイズ */
+    color: var(--secondary-color); /* 濃い青 */
+    margin-bottom: 1rem;          /* 下の余白 */
+    padding-bottom: 0.5rem;       /* 下の内側余白 */
+    border-bottom: 2px solid var(--border-color); /* 下に線 */
+}
+
+.formula {
+    font-size: 1.1rem;            /* 少し大きめの文字 */
+    line-height: 2;               /* 行間を広く（2倍） */
+}
+
+/**
+ * MathJax（数式）のサイズ調整
+ * !important: 他のスタイルより優先される
+ */
+.formula .MathJax {
+    font-size: 1.2em !important;  /* 数式を1.2倍に */
+}
+
+.description {
+    color: #64748b;               /* グレーの文字色 */
+    font-size: 0.95rem;           /* 少し小さめの文字 */
+    margin-top: 0.75rem;          /* 上の余白 */
+    font-style: italic;           /* 斜体（イタリック） */
+}
+
+.formula ul {
+    list-style-position: inside;  /* 箇条書きの点を内側に */
+    margin-top: 0.75rem;          /* 上の余白 */
+    color: #475569;               /* 文字色（濃いグレー） */
+}
+
+.formula ul li {
+    margin: 0.5rem 0;             /* 上下の余白 */
+    padding-left: 1rem;           /* 左の内側余白 */
+}
+
+/* ===== 導出方法のスタイル ===== */
+/**
+ * .formula-card.derivation
+ * formula-cardクラスとderivationクラスの両方を持つ要素
+ */
+.formula-card.derivation {
+    border-left: 4px solid var(--derivation-border); /* 左に太いオレンジ線 */
+}
+
+.derivation-content {
+    background: var(--derivation-bg);    /* 薄い黄色の背景 */
+    border-radius: 8px;                  /* 角を丸く */
+    padding: 1.5rem;                     /* 内側の余白 */
+    margin-top: 1.5rem;                  /* 上の余白 */
+    border: 1px solid var(--derivation-border); /* オレンジの枠線 */
+}
+
+.derivation-content h5 {
+    font-size: 1.2rem;                   /* 見出しサイズ */
+    color: #92400e;                      /* 茶色 */
+    margin-bottom: 1rem;                 /* 下の余白 */
+    display: flex;                       /* フレックスボックス */
+    align-items: center;                 /* 縦方向中央揃え */
+    gap: 0.5rem;                         /* 要素間の間隔 */
+}
+
+.derivation-content p {
+    color: #78350f;                      /* 濃い茶色 */
+    margin-bottom: 0.75rem;              /* 下の余白 */
+    line-height: 1.8;                    /* 行間 */
+}
+
+/* ===== 例題のスタイル ===== */
+.example-content {
+    background: #e0f2fe;                 /* 薄い青の背景 */
+    border-radius: 8px;                  /* 角を丸く */
+    padding: 1.5rem;                     /* 内側の余白 */
+    margin-top: 1.5rem;                  /* 上の余白 */
+    border: 1px solid #0ea5e9;           /* 水色の枠線 */
+}
+
+.example-content h5 {
+    font-size: 1.2rem;                   /* 見出しサイズ */
+    color: #075985;                      /* 濃い青 */
+    margin-bottom: 1rem;                 /* 下の余白 */
+    display: flex;                       /* フレックスボックス */
+    align-items: center;                 /* 縦方向中央揃え */
+    gap: 0.5rem;                         /* 要素間の間隔 */
+}
+
+.example-content p {
+    color: #0c4a6e;                      /* 濃い青 */
+    margin-bottom: 0.75rem;              /* 下の余白 */
+    line-height: 1.8;                    /* 行間 */
+}
+
+.example-problem {
+    background: white;                   /* 背景色（白） */
+    padding: 1rem;                       /* 内側の余白 */
+    border-radius: 6px;                  /* 角を丸く */
+    margin: 1rem 0;                      /* 上下の余白 */
+    border-left: 3px solid #0ea5e9;      /* 左に水色の線 */
+}
+
+.example-solution {
+    background: #f0f9ff;                 /* 薄い青の背景 */
+    padding: 1rem;                       /* 内側の余白 */
+    border-radius: 6px;                  /* 角を丸く */
+    margin: 1rem 0;                      /* 上下の余白 */
+    border-left: 3px solid #38bdf8;      /* 左に明るい水色の線 */
+}
+
+/* ===== フッター（ページ下部）のスタイル ===== */
+footer {
+    background: var(--secondary-color); /* 濃い青の背景 */
+    color: white;                       /* 白文字 */
+    text-align: center;                 /* 中央揃え */
+    padding: 2rem 1rem;                 /* 内側の余白 */
+    margin-top: 4rem;                   /* 上の余白 */
+}
+
+footer p {
+    margin: 0.5rem 0;                   /* 上下の余白 */
+}
+
+/* ===== レスポンシブデザイン（スマホ対応） ===== */
+/**
+ * @media: 画面サイズに応じてスタイルを変える
+ * max-width: 768px → 画面幅が768px以下（スマホやタブレット）のとき
+ */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;              /* 見出しを小さく */
+    }
+
+    header p {
+        font-size: 0.95rem;             /* 文字を小さく */
+    }
+
+    .nav-link {
+        padding: 0.6rem 1rem;           /* ボタンを小さく */
+        font-size: 0.9rem;              /* 文字を小さく */
+    }
+
+    .math-section h2 {
+        font-size: 1.8rem;              /* 見出しを小さく */
+    }
+
+    .category h3 {
+        font-size: 1.4rem;              /* 見出しを小さく */
+    }
+
+    .formula-card h4 {
+        font-size: 1.2rem;              /* 見出しを小さく */
+    }
+
+    .formula {
+        font-size: 1rem;                /* 文字を小さく */
+    }
+
+    .formula-card {
+        padding: 1rem;                  /* 余白を狭く */
+    }
+}
+
+/* ===== ユーティリティクラス ===== */
+/**
+ * 非表示クラス
+ * JavaScriptから追加/削除して表示/非表示を切り替える
+ * !important: 他のスタイルより優先される
+ */
+.hidden {
+    display: none !important;
+}
+
+/* ===== スクロールバーのカスタマイズ（Webkitブラウザ用） ===== */
+/**
+ * ::-webkit-scrollbar: スクロールバー全体
+ * Chrome、Safari、Edgeなどで有効
+ */
+::-webkit-scrollbar {
+    width: 10px;                        /* スクロールバーの幅 */
+}
+
+/**
+ * ::-webkit-scrollbar-track: スクロールバーの背景部分
+ */
+::-webkit-scrollbar-track {
+    background: var(--background-color); /* 背景色 */
+}
+
+/**
+ * ::-webkit-scrollbar-thumb: スクロールバーのつまみ部分
+ */
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);    /* 青色 */
+    border-radius: 5px;                  /* 角を丸く */
+}
+
+/**
+ * つまみにマウスを重ねたとき
+ */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);  /* 濃い青に変更 */
+}
+
+/* ===== MathJax（数式表示）の調整 ===== */
+/**
+ * mjx-container: MathJaxが作る数式コンテナ
+ */
+mjx-container {
+    overflow-x: auto;     /* 横方向にはみ出たらスクロール可能に */
+    overflow-y: hidden;   /* 縦方向のスクロールは無効 */
+}
+
+/* ===== アニメーション ===== */
+/**
+ * @keyframes: アニメーションの定義
+ * fadeIn: フェードイン（徐々に現れる）効果
+ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;                   /* 最初は透明（見えない） */
+        transform: translateY(10px);  /* 10px下の位置から */
+    }
+    to {
+        opacity: 1;                   /* 最後は不透明（見える） */
+        transform: translateY(0);     /* 元の位置に */
+    }
+}
+
+/**
+ * 公式カードにフェードインアニメーションを適用
+ */
+.formula-card {
+    animation: fadeIn 0.5s ease-out;  /* 0.5秒かけてフェードイン */
+}

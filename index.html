@@ -1,0 +1,2518 @@
+<!DOCTYPE html>
+<!-- 
+=============================================================================
+高校数学公式集 - HTMLファイル
+=============================================================================
+
+【このファイルの役割】
+このファイルは、Webページの「構造」と「内容」を定義しています。
+家に例えると、HTMLは「骨組み」や「間取り」にあたります。
+
+【HTMLの基本構造】
+<要素名 属性="値">内容</要素名>
+- 要素名: タグの種類（div, p, h1など）
+- 属性: 追加情報（id, class, hrefなど）
+- 内容: 表示される文字や子要素
+
+【主要な要素の説明】
+- <header>: ページの上部（ヘッダー）
+- <nav>: ナビゲーション（メニュー）
+- <main>: メインコンテンツ
+- <section>: セクション（意味のあるまとまり）
+- <div>: グループ化（スタイル適用のため）
+- <h1>〜<h6>: 見出し（数字が大きいほど小さい）
+- <p>: 段落
+- <a>: リンク
+- <strong>: 太字（強調）
+- <footer>: ページの下部（フッター）
+
+【クラスとIDの違い】
+- class: 複数の要素に同じスタイルを適用（例: class="formula-card"）
+- id: 1つの要素を一意に識別（例: id="searchBox"）
+
+【数式の表示】
+\[ ... \]: ブロック数式（改行して中央に表示）
+\( ... \): インライン数式（文中に表示）
+→ MathJaxライブラリが数式を美しく表示します
+
+=============================================================================
+-->
+
+<!-- DOCTYPE宣言: HTML5形式で書かれたページであることを宣言 -->
+
+<html lang="ja">
+<!-- html要素: ページ全体を囲む最上位の要素。lang="ja"で日本語ページを指定 -->
+
+<head>
+    <!-- head要素: ページの情報（メタ情報）を記述。画面には表示されない -->
+    
+    <meta charset="UTF-8">
+    <!-- 文字コード指定: UTF-8（日本語を含む世界中の文字に対応） -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ビューポート設定: スマホなどで正しく表示するための設定 -->
+    <!-- width=device-width: 画面幅に合わせる -->
+    <!-- initial-scale=1.0: 初期表示倍率を100%に -->
+    
+    <title>高校数学公式集 - 数学1A2B3C完全版</title>
+    <!-- タイトル: ブラウザのタブに表示される文字 -->
+    
+    <link rel="stylesheet" href="styles.css">
+    <!-- 外部CSSファイルの読み込み: styles.cssを適用 -->
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <!-- Polyfill: 古いブラウザでも最新JavaScript機能を使えるようにする -->
+    
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- MathJax: 数学の公式をきれいに表示するライブラリ -->
+    <!-- async: ページ読み込みを待たずに非同期で読み込む -->
+</head>
+
+<body>
+    <!-- body要素: 実際に画面に表示される部分 -->
+    
+    <header>
+        <!-- header: ページの上部（ヘッダー）。タイトルなどを配置 -->
+        <h1>📐 高校数学公式集</h1>
+        <!-- h1: 最も大きな見出し（ページに1つだけ使う） -->
+        
+        <p>数学1A2B3C 完全版 - 導出方法付き</p>
+        <!-- p: 段落（paragraph） -->
+    </header>
+
+    <nav>
+        <!-- nav: ナビゲーション（メニュー）。ページ内リンクなどを配置 -->
+        <!-- ページ上部に固定されて、スクロールしても常に表示される -->
+        
+        <div class="nav-container">
+            <!-- div: グループ化のための汎用コンテナ（division = 区分） -->
+            <!-- class="nav-container": CSSでスタイルを適用するための目印 -->
+            
+            <a href="#math1a" class="nav-link">数学1A</a>
+            <!-- a要素（anchor = 錨）: リンクを作る -->
+            <!-- href="#math1a": ハイパーリファレンス。#は同じページ内のid="math1a"の場所を指す -->
+            <!-- class="nav-link": ボタンのようなスタイルを適用するクラス名 -->
+            
+            <a href="#math2b" class="nav-link">数学2B</a>
+            <!-- 同様に、id="math2b"の場所へのリンク -->
+            
+            <a href="#math3c" class="nav-link">数学3C</a>
+            <!-- 同様に、id="math3c"の場所へのリンク -->
+        </div>
+        
+        <div class="search-container">
+            <!-- 検索ボックスを囲むコンテナ（中央揃えなどのスタイル用） -->
+            
+            <input type="text" id="searchBox" placeholder="公式を検索..." />
+            <!-- input要素: ユーザーが情報を入力するフォーム部品 -->
+            <!-- type="text": 普通のテキスト入力欄（他にtype="password"などもある） -->
+            <!-- id="searchBox": JavaScriptから要素を特定するための一意な識別子 -->
+            <!-- placeholder: 入力欄に薄く表示されるヒント文字（入力すると消える） -->
+        </div>
+    </nav>
+
+    <main>
+        <!-- main: ページのメインコンテンツ（主要な内容）を示す -->
+        <!-- ページに1つだけ配置する（ヘッダーやフッターは含まない） -->
+        
+        <!-- ========================================
+             数学1Aセクション
+             ======================================== -->
+        <section id="math1a" class="math-section">
+            <!-- section: 意味のあるまとまり（セクション）を示す -->
+            <!-- id="math1a": この要素を一意に識別する名前。ナビゲーションからリンクされる -->
+            <!-- class="math-section": 複数のセクションに共通のスタイルを適用するクラス -->
+            
+            <h2>数学1A</h2>
+            <!-- h2: 2番目に大きな見出し（h1より小さい） -->
+            <!-- 見出しはh1〜h6まであり、数字が大きいほど小さくなる -->
+            
+            <!-- 数と式カテゴリ -->
+            <div class="category">
+                <!-- カテゴリ: 関連する公式をまとめるグループ -->
+                
+                <h3>📌 数と式</h3>
+                <!-- h3: 3番目に大きな見出し（カテゴリ名に使用） -->
+                <!-- 📌: 絵文字を使って視覚的にわかりやすく -->
+                
+                <div class="formula-card">
+                    <!-- 公式カード: 1つの公式をカードのようにまとめて表示 -->
+                    <!-- class="formula-card": CSSで影や角丸、余白などのスタイルを適用 -->
+                    
+                    <h4>展開公式</h4>
+                    <!-- h4: 4番目に大きな見出し（個別の公式タイトルに使用） -->
+                    
+                    <div class="formula">
+                        <!-- 数式を表示するコンテナ -->
+                        
+                        <!-- ========== MathJax記法の説明 ==========
+                             \[ ... \]: ブロック数式（改行して中央に表示）
+                             \( ... \): インライン数式（文中に表示）
+                             ^: 上付き文字（累乗など）
+                             _: 下付き文字（添字など）
+                             \sum: Σ記号
+                             \frac{分子}{分母}: 分数
+                             ======================================= -->
+                        
+                        \[(a+b)^2 = a^2 + 2ab + b^2\]
+                        <!-- (a+b)の2乗の展開公式 -->
+                        
+                        \[(a-b)^2 = a^2 - 2ab + b^2\]
+                        <!-- (a-b)の2乗の展開公式 -->
+                        
+                        \[(a+b)(a-b) = a^2 - b^2\]
+                        <!-- 和と差の積（平方の差） -->
+                        
+                        \[(x+a)(x+b) = x^2 + (a+b)x + ab\]
+                        <!-- たすきがけの基本形 -->
+                        
+                        \[(ax+b)(cx+d) = acx^2 + (ad+bc)x + bd\]
+                        <!-- 一般的なたすきがけ -->
+                        
+                        \[(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3\]
+                        <!-- (a+b)の3乗の展開公式 -->
+                        
+                        \[(a-b)^3 = a^3 - 3a^2b + 3ab^2 - b^3\]
+                        <!-- (a-b)の3乗の展開公式 -->
+                        
+                        \[a^3 + b^3 = (a+b)(a^2 - ab + b^2)\]
+                        <!-- 3乗の和の因数分解 -->
+                        
+                        \[a^3 - b^3 = (a-b)(a^2 + ab + b^2)\]
+                        <!-- 3乗の差の因数分解 -->
+                    </div>
+                    
+                    <div class="example-content">
+                        <!-- 例題エリア: 実際の問題で公式の使い方を学ぶ -->
+                        <!-- class="example-content": 青い背景のスタイルが適用される -->
+                        
+                        <h5>📚 例題</h5>
+                        <!-- h5: 5番目に大きな見出し -->
+                        
+                        <div class="example-problem">
+                            <!-- 問題部分 -->
+                            <strong>問:</strong> \((x+3)^2\) を展開せよ。
+                            <!-- strong: 文字を太字にする（重要な部分を強調） -->
+                            <!-- \( ... \): MathJaxのインライン数式（文中に埋め込む） -->
+                        </div>
+                        
+                        <div class="example-solution">
+                            <!-- 解答部分 -->
+                            <strong>解:</strong><br>
+                            <!-- br: 改行タグ（break = 折る） -->
+                            <!-- br: 改行 -->
+                            \[(x+3)^2 = x^2 + 2 \cdot x \cdot 3 + 3^2 = x^2 + 6x + 9\]
+                        </div>
+                        
+                        <div class="example-problem">
+                            <strong>問:</strong> \((2x+1)(3x-2)\) を展開せよ。
+                        </div>
+                        
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[(2x+1)(3x-2) = 2 \cdot 3x^2 + (2 \cdot (-2) + 1 \cdot 3)x + 1 \cdot (-2)\]
+                            \[= 6x^2 + x - 2\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>因数分解</h4>
+                    <div class="formula">
+                        \[a^2 + 2ab + b^2 = (a+b)^2\]
+                        \[a^2 - 2ab + b^2 = (a-b)^2\]
+                        \[a^2 - b^2 = (a+b)(a-b)\]
+                        \[x^2 + (a+b)x + ab = (x+a)(x+b)\]
+                        \[acx^2 + (ad+bc)x + bd = (ax+b)(cx+d)\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(x^2 + 5x + 6\) を因数分解せよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(2 + 3 = 5\), \(2 \times 3 = 6\) より<br>
+                            \[x^2 + 5x + 6 = (x+2)(x+3)\]
+                        </div>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(x^2 - 9\) を因数分解せよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[x^2 - 9 = x^2 - 3^2 = (x+3)(x-3)\]
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 次の公式カード -->
+                <div class="formula-card">
+                    <!-- 新しい公式カードの開始 -->
+                    
+                    <h4>絶対値</h4>
+                    
+                    <div class="formula">
+                        <!-- ========== 場合分けの記法 ==========
+                             \begin{cases} ... \end{cases}: 場合分けを表示
+                             &: 揃える位置を指定
+                             \\: 改行
+                             ======================================= -->
+                        
+                        \[|a| = \begin{cases} a & (a \geq 0) \\ -a & (a < 0) \end{cases}\]
+                        <!-- \geq: ≧（以上）の記号 -->
+                        
+                        \[|ab| = |a||b|\]
+                        <!-- 絶対値の積の性質 -->
+                        
+                        \[\left|\frac{a}{b}\right| = \frac{|a|}{|b|} \quad (b \neq 0)\]
+                        <!-- \left| \right|: 大きさを自動調整する絶対値記号 -->
+                        <!-- \neq: ≠（等しくない）の記号 -->
+                        <!-- \quad: 空白を入れる -->
+                        
+                        \[|a+b| \leq |a| + |b|\]
+                        <!-- \leq: ≦（以下）の記号 -->
+                        <!-- 三角不等式と呼ばれる重要な性質 -->
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(|x-2| = 5\) を満たす \(x\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(x - 2 = 5\) または \(x - 2 = -5\)<br>
+                            \(x = 7\) または \(x = -3\)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>平方根</h4>
+                    <div class="formula">
+                        \[\sqrt{a} \cdot \sqrt{b} = \sqrt{ab} \quad (a \geq 0, b \geq 0)\]
+                        \[\frac{\sqrt{a}}{\sqrt{b}} = \sqrt{\frac{a}{b}} \quad (a \geq 0, b > 0)\]
+                        \[(\sqrt{a})^2 = a \quad (a \geq 0)\]
+                        \[\sqrt{a^2} = |a|\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\sqrt{12}\) を簡単にせよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\sqrt{12} = \sqrt{4 \times 3} = \sqrt{4} \times \sqrt{3} = 2\sqrt{3}\]
+                        </div>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\frac{1}{\sqrt{2}}\) の分母を有理化せよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\frac{1}{\sqrt{2}} = \frac{1}{\sqrt{2}} \times \frac{\sqrt{2}}{\sqrt{2}} = \frac{\sqrt{2}}{2}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card derivation">
+                    <h4>2項定理</h4>
+                    <div class="formula">
+                        \[(a+b)^n = \sum_{k=0}^{n} {}_nC_k a^{n-k}b^k\]
+                        <!-- \sum: Σ記号（総和）、_{k=0}^{n}: kが0からnまで -->
+                        <!-- {}_nC_k: 組合せ（nCk）の表記 -->
+                        
+                        \[= {}_nC_0 a^n + {}_nC_1 a^{n-1}b + {}_nC_2 a^{n-2}b^2 + \cdots + {}_nC_n b^n\]
+                        <!-- \cdots: 点々（省略記号） -->
+                    </div>
+                    
+                    <div class="derivation-content">
+                        <!-- 導出方法エリア: 公式がどうやって導かれるか説明 -->
+                        <!-- class="derivation-content": 黄色い背景のスタイルが適用される -->
+                        
+                        <h5>📝 導出方法（パスカルの三角形から）</h5>
+                        <!-- 📝: 導出方法を示す絵文字 -->
+                        
+                        <p>\(n=1\): \((a+b)^1 = a + b\)</p>
+                        <!-- p: 段落タグ。1つの文や説明をまとめる -->
+                        
+                        <p>\(n=2\): \((a+b)^2 = a^2 + 2ab + b^2\) （係数: 1, 2, 1）</p>
+                        <p>\(n=3\): \((a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3\) （係数: 1, 3, 3, 1）</p>
+                        <p>係数は組合せ \({}_nC_k\) で表される。</p>
+                        <p>一般に、\(a^{n-k}b^k\) の係数は、\(n\) 個の \((a+b)\) から \(b\) を \(k\) 個選ぶ組合せ \({}_nC_k\) となる。</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \((x+2)^4\) を展開したときの \(x^2\) の係数を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \((x+2)^4\) の展開式で \(x^2\) の項は \({}_4C_2 x^2 \cdot 2^2\)<br>
+                            \[{}_4C_2 \cdot 2^2 = \frac{4!}{2!2!} \cdot 4 = 6 \cdot 4 = 24\]
+                            よって、\(x^2\) の係数は \(24\)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>相加平均・相乗平均の関係</h4>
+                    <div class="formula">
+                        \[a > 0, b > 0 \text{ のとき}\]
+                        \[\frac{a+b}{2} \geq \sqrt{ab}\]
+                        <p class="description">等号成立は \(a = b\) のとき</p>
+                        <p>一般に（\(n\) 個の正の数）:</p>
+                        \[\frac{a_1 + a_2 + \cdots + a_n}{n} \geq \sqrt[n]{a_1 a_2 \cdots a_n}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(x > 0\) のとき、\(x + \frac{4}{x}\) の最小値を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            相加平均・相乗平均の関係より<br>
+                            \[x + \frac{4}{x} \geq 2\sqrt{x \cdot \frac{4}{x}} = 2\sqrt{4} = 4\]
+                            等号成立は \(x = \frac{4}{x}\) すなわち \(x = 2\) のとき<br>
+                            よって、最小値は \(4\) （\(x = 2\) のとき）
+                        </div>
+                    </div>
+                </div>
+                        \[a > 0, b > 0 \text{ のとき}\]
+                        \[\frac{a+b}{2} \geq \sqrt{ab}\]
+                        <p class="description">等号成立は \(a = b\) のとき</p>
+                        <p>一般に（\(n\) 個の正の数）:</p>
+                        \[\frac{a_1 + a_2 + \cdots + a_n}{n} \geq \sqrt[n]{a_1 a_2 \cdots a_n}\]
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>コーシー・シュワルツの不等式</h4>
+                    <div class="formula">
+                        \[(a^2 + b^2)(c^2 + d^2) \geq (ac + bd)^2\]
+                        <p class="description">等号成立は \(ad = bc\) のとき</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(x^2 + y^2 = 1\) のとき、\(3x + 4y\) の最大値を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            コーシー・シュワルツの不等式より<br>
+                            \[(x^2 + y^2)(3^2 + 4^2) \geq (3x + 4y)^2\]
+                            \[1 \times 25 \geq (3x + 4y)^2\]
+                            \[(3x + 4y)^2 \leq 25\]
+                            \[3x + 4y \leq 5\]
+                            よって、最大値は \(5\)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2次関数 -->
+            <div class="category">
+                <h3>📌 2次関数</h3>
+                
+                <div class="formula-card">
+                    <h4>2次関数の標準形</h4>
+                    <div class="formula">
+                        \[y = a(x-p)^2 + q\]
+                        <p class="description">頂点: \((p, q)\)、軸: \(x = p\)</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(y = x^2 - 6x + 11\) を標準形に変形し、頂点の座標を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[y = x^2 - 6x + 11 = (x^2 - 6x + 9) + 2 = (x-3)^2 + 2\]
+                            頂点: \((3, 2)\)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>2次方程式の解の公式</h4>
+                    <div class="formula">
+                        \[ax^2 + bx + c = 0 \text{ のとき}\]
+                        \[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]
+                        <p class="description">判別式: \(D = b^2 - 4ac\)</p>
+                        <ul>
+                            <li>\(D > 0\): 異なる2つの実数解</li>
+                            <li>\(D = 0\): 重解</li>
+                            <li>\(D < 0\): 実数解なし</li>
+                        </ul>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(x^2 - 5x + 6 = 0\) を解け。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(a=1, b=-5, c=6\) より<br>
+                            \[x = \frac{5 \pm \sqrt{25-24}}{2} = \frac{5 \pm 1}{2}\]
+                            \[x = 3, 2\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>解と係数の関係</h4>
+                    <div class="formula">
+                        \[ax^2 + bx + c = 0\] の解を \(\alpha, \beta\) とすると
+                        \[\alpha + \beta = -\frac{b}{a}\]
+                        \[\alpha\beta = \frac{c}{a}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(x^2 - 7x + 12 = 0\) の2つの解を \(\alpha, \beta\) とするとき、\(\alpha^2 + \beta^2\) の値を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            解と係数の関係より \(\alpha + \beta = 7\), \(\alpha\beta = 12\)<br>
+                            \[\alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta = 7^2 - 2 \cdot 12 = 49 - 24 = 25\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>最大値・最小値</h4>
+                    <div class="formula">
+                        \[y = a(x-p)^2 + q\]
+                        <ul>
+                            <li>\(a > 0\): \(x = p\) で最小値 \(q\)</li>
+                            <li>\(a < 0\): \(x = p\) で最大値 \(q\)</li>
+                        </ul>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(y = x^2 - 4x + 7\) の最小値を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            平方完成すると<br>
+                            \[y = (x-2)^2 + 3\]
+                            \(a = 1 > 0\) より、\(x = 2\) で最小値 \(3\)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 図形と計量 -->
+            <div class="category">
+                <h3>📌 図形と計量</h3>
+                
+                <div class="formula-card">
+                    <h4>三角比の定義</h4>
+                    <div class="formula">
+                        \[\sin\theta = \frac{\text{対辺}}{\text{斜辺}}\]
+                        \[\cos\theta = \frac{\text{隣辺}}{\text{斜辺}}\]
+                        \[\tan\theta = \frac{\text{対辺}}{\text{隣辺}}\]
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>三角比の相互関係</h4>
+                    <div class="formula">
+                        \[\tan\theta = \frac{\sin\theta}{\cos\theta}\]
+                        \[\sin^2\theta + \cos^2\theta = 1\]
+                        \[1 + \tan^2\theta = \frac{1}{\cos^2\theta}\]
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>正弦定理</h4>
+                    <div class="formula">
+                        \[\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R\]
+                        <p class="description">\(R\): 外接円の半径</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> △ABCにおいて、\(a=3\), \(A=60°\), \(B=45°\) のとき、辺 \(b\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            正弦定理より<br>
+                            \[\frac{3}{\sin 60°} = \frac{b}{\sin 45°}\]
+                            \[b = \frac{3 \sin 45°}{\sin 60°} = \frac{3 \cdot \frac{\sqrt{2}}{2}}{\frac{\sqrt{3}}{2}} = \frac{3\sqrt{2}}{\sqrt{3}} = \sqrt{6}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>余弦定理</h4>
+                    <div class="formula">
+                        \[a^2 = b^2 + c^2 - 2bc\cos A\]
+                        \[b^2 = c^2 + a^2 - 2ca\cos B\]
+                        \[c^2 = a^2 + b^2 - 2ab\cos C\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> △ABCにおいて、\(a=5\), \(b=7\), \(c=8\) のとき、\(\cos A\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            余弦定理より<br>
+                            \[a^2 = b^2 + c^2 - 2bc\cos A\]
+                            \[25 = 49 + 64 - 2 \cdot 7 \cdot 8 \cos A\]
+                            \[25 = 113 - 112\cos A\]
+                            \[\cos A = \frac{113-25}{112} = \frac{88}{112} = \frac{11}{14}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>三角形の面積</h4>
+                    <div class="formula">
+                        \[S = \frac{1}{2}bc\sin A = \frac{1}{2}ca\sin B = \frac{1}{2}ab\sin C\]
+                        <p class="description">ヘロンの公式:</p>
+                        \[S = \sqrt{s(s-a)(s-b)(s-c)}\]
+                        \[\text{ただし } s = \frac{a+b+c}{2}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> △ABCにおいて、\(b=3\), \(c=4\), \(A=60°\) のとき、三角形の面積を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[S = \frac{1}{2} \times 3 \times 4 \times \sin 60° = \frac{1}{2} \times 12 \times \frac{\sqrt{3}}{2} = 3\sqrt{3}\]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 集合と論理 -->
+            <div class="category">
+                <h3>📌 集合と論理</h3>
+                
+                <div class="formula-card">
+                    <h4>集合の記号</h4>
+                    <div class="formula">
+                        <ul>
+                            <li>\(A \cup B\): 和集合</li>
+                            <li>\(A \cap B\): 積集合</li>
+                            <li>\(\overline{A}\): 補集合</li>
+                            <li>\(A \subset B\): 部分集合</li>
+                            <li>\(\emptyset\): 空集合</li>
+                            <li>\(U\): 全体集合</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>ド・モルガンの法則</h4>
+                    <div class="formula">
+                        \[\overline{A \cup B} = \overline{A} \cap \overline{B}\]
+                        \[\overline{A \cap B} = \overline{A} \cup \overline{B}\]
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>要素の個数</h4>
+                    <div class="formula">
+                        \[n(A \cup B) = n(A) + n(B) - n(A \cap B)\]
+                        \[n(\overline{A}) = n(U) - n(A)\]
+                    </div>
+                </div>
+            </div>
+
+            <!-- 場合の数と確率 -->
+            <div class="category">
+                <h3>📌 場合の数と確率</h3>
+                
+                <div class="formula-card">
+                    <h4>順列</h4>
+                    <div class="formula">
+                        \[{}_nP_r = \frac{n!}{(n-r)!} = n(n-1)(n-2)\cdots(n-r+1)\]
+                        <p class="description">円順列: \((n-1)!\)</p>
+                        <p class="description">重複順列: \(n^r\)</p>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>組合せ</h4>
+                    <div class="formula">
+                        \[{}_nC_r = \frac{n!}{r!(n-r)!} = \frac{{}_nP_r}{r!}\]
+                        \[{}_nC_r = {}_nC_{n-r}\]
+                        \[{}_nC_r + {}_nC_{r-1} = {}_{n+1}C_r\]
+                        <p class="description">重複組合せ:</p>
+                        \[{}_nH_r = {}_{n+r-1}C_r\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 10人の中から3人の委員を選ぶ方法は何通りあるか。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[{}_{10}C_3 = \frac{10!}{3!7!} = \frac{10 \times 9 \times 8}{3 \times 2 \times 1} = 120 \text{通り}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>階乗</h4>
+                    <div class="formula">
+                        \[n! = n \times (n-1) \times (n-2) \times \cdots \times 2 \times 1\]
+                        \[0! = 1\]
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>確率の基本</h4>
+                    <div class="formula">
+                        \[P(A) = \frac{\text{事象Aの起こる場合の数}}{\text{全ての場合の数}}\]
+                        \[0 \leq P(A) \leq 1\]
+                        \[P(\overline{A}) = 1 - P(A)\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> サイコロを1回投げるとき、3以下の目が出る確率を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            全ての場合の数は6通り<br>
+                            3以下の目（1, 2, 3）が出る場合の数は3通り<br>
+                            \[P = \frac{3}{6} = \frac{1}{2}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>確率の加法定理</h4>
+                    <div class="formula">
+                        \[P(A \cup B) = P(A) + P(B) - P(A \cap B)\]
+                        <p class="description">排反事象のとき:</p>
+                        \[P(A \cup B) = P(A) + P(B)\]
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>確率の乗法定理</h4>
+                    <div class="formula">
+                        \[P(A \cap B) = P(A) \cdot P_A(B)\]
+                        <p class="description">独立事象のとき:</p>
+                        \[P(A \cap B) = P(A) \cdot P(B)\]
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>期待値</h4>
+                    <div class="formula">
+                        \[E(X) = x_1p_1 + x_2p_2 + \cdots + x_np_n\]
+                        <p>期待値の性質:</p>
+                        \[E(aX + b) = aE(X) + b\]
+                        \[E(X + Y) = E(X) + E(Y)\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> サイコロを1回投げるとき、出る目の期待値を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[E(X) = 1 \times \frac{1}{6} + 2 \times \frac{1}{6} + 3 \times \frac{1}{6} + 4 \times \frac{1}{6} + 5 \times \frac{1}{6} + 6 \times \frac{1}{6}\]
+                            \[= \frac{1+2+3+4+5+6}{6} = \frac{21}{6} = 3.5\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>分散と標準偏差</h4>
+                    <div class="formula">
+                        <p>分散:</p>
+                        \[V(X) = E\{(X - E(X))^2\} = E(X^2) - \{E(X)\}^2\]
+                        <p>標準偏差:</p>
+                        \[\sigma(X) = \sqrt{V(X)}\]
+                        <p>分散の性質:</p>
+                        \[V(aX + b) = a^2V(X)\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(X\)が1, 2, 3の値を等確率でとるとき、分散を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(E(X) = \frac{1+2+3}{3} = 2\)<br>
+                            \(E(X^2) = \frac{1^2+2^2+3^2}{3} = \frac{14}{3}\)<br>
+                            \[V(X) = \frac{14}{3} - 2^2 = \frac{14}{3} - 4 = \frac{2}{3}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>条件付き確率</h4>
+                    <div class="formula">
+                        \[P_A(B) = \frac{P(A \cap B)}{P(A)}\]
+                        <p class="description">ベイズの定理:</p>
+                        \[P_B(A) = \frac{P_A(B) \cdot P(A)}{P(B)}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 赤玉3個、白玉2個の袋から、1個取り出して戻さずにもう1個取り出す。1個目が赤玉であったとき、2個目も赤玉である確率を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(A\): 1個目が赤玉、\(B\): 2個目も赤玉<br>
+                            \(P(A) = \frac{3}{5}\)<br>
+                            \(P(A \cap B) = \frac{3}{5} \times \frac{2}{4} = \frac{3}{10}\)<br>
+                            \[P_A(B) = \frac{P(A \cap B)}{P(A)} = \frac{3/10}{3/5} = \frac{3}{10} \times \frac{5}{3} = \frac{1}{2}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>反復試行の確率</h4>
+                    <div class="formula">
+                        <p>1回の試行で事象Aの起こる確率が \(p\) のとき、\(n\) 回の反復試行で事象Aがちょうど \(r\) 回起こる確率:</p>
+                        \[P = {}_nC_r p^r(1-p)^{n-r}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> コインを5回投げるとき、表がちょうど3回出る確率を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(n=5, r=3, p=\frac{1}{2}\)<br>
+                            \[P = {}_5C_3 \left(\frac{1}{2}\right)^3 \left(\frac{1}{2}\right)^2\]
+                            \[= 10 \times \frac{1}{8} \times \frac{1}{4} = \frac{10}{32} = \frac{5}{16}\]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 数学2B -->
+        <section id="math2b" class="math-section">
+            <h2>数学2B</h2>
+            
+            <!-- 三角関数 -->
+            <div class="category">
+                <h3>📌 三角関数</h3>
+                
+                <div class="formula-card">
+                    <h4>弧度法</h4>
+                    <div class="formula">
+                        \[180° = \pi \text{ rad}\]
+                        \[\text{弧の長さ: } l = r\theta\]
+                        \[\text{扇形の面積: } S = \frac{1}{2}r^2\theta\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 半径6cm、中心角 \(\frac{\pi}{3}\) の扇形の弧の長さと面積を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(r=6, \theta=\frac{\pi}{3}\)<br>
+                            弧の長さ: \(l = 6 \times \frac{\pi}{3} = 2\pi\) (cm)<br>
+                            面積: \(S = \frac{1}{2} \times 6^2 \times \frac{\pi}{3} = 6\pi\) (cm²)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>三角関数の定義</h4>
+                    <div class="formula">
+                        \[\sin\theta = \frac{y}{r}, \quad \cos\theta = \frac{x}{r}, \quad \tan\theta = \frac{y}{x}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 動径が点(3, 4)を通るとき、\(\sin\theta\) と \(\cos\theta\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(r = \sqrt{3^2 + 4^2} = 5\)<br>
+                            \[\sin\theta = \frac{4}{5}, \quad \cos\theta = \frac{3}{5}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>三角関数の相互関係</h4>
+                    <div class="formula">
+                        \[\sin^2\theta + \cos^2\theta = 1\]
+                        \[1 + \tan^2\theta = \frac{1}{\cos^2\theta}\]
+                        \[\tan\theta = \frac{\sin\theta}{\cos\theta}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\sin\theta = \frac{3}{5}\) (\(0 < \theta < \frac{\pi}{2}\)) のとき、\(\cos\theta\) と \(\tan\theta\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(\sin^2\theta + \cos^2\theta = 1\) より<br>
+                            \(\cos^2\theta = 1 - \left(\frac{3}{5}\right)^2 = 1 - \frac{9}{25} = \frac{16}{25}\)<br>
+                            \(0 < \theta < \frac{\pi}{2}\) より \(\cos\theta > 0\) なので<br>
+                            \(\cos\theta = \frac{4}{5}\)<br>
+                            \(\tan\theta = \frac{\sin\theta}{\cos\theta} = \frac{3/5}{4/5} = \frac{3}{4}\)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>加法定理</h4>
+                    <div class="formula">
+                        \[\sin(\alpha + \beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta\]
+                        \[\sin(\alpha - \beta) = \sin\alpha\cos\beta - \cos\alpha\sin\beta\]
+                        \[\cos(\alpha + \beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta\]
+                        \[\cos(\alpha - \beta) = \cos\alpha\cos\beta + \sin\alpha\sin\beta\]
+                        \[\tan(\alpha + \beta) = \frac{\tan\alpha + \tan\beta}{1 - \tan\alpha\tan\beta}\]
+                        \[\tan(\alpha - \beta) = \frac{\tan\alpha - \tan\beta}{1 + \tan\alpha\tan\beta}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\sin 75°\) の値を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(75° = 45° + 30°\) として加法定理を使う<br>
+                            \[\sin 75° = \sin(45° + 30°)\]
+                            \[= \sin 45°\cos 30° + \cos 45°\sin 30°\]
+                            \[= \frac{\sqrt{2}}{2} \cdot \frac{\sqrt{3}}{2} + \frac{\sqrt{2}}{2} \cdot \frac{1}{2}\]
+                            \[= \frac{\sqrt{6} + \sqrt{2}}{4}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card derivation">
+                    <h4>2倍角の公式</h4>
+                    <div class="formula">
+                        \[\sin 2\alpha = 2\sin\alpha\cos\alpha\]
+                        \[\cos 2\alpha = \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha\]
+                        \[\tan 2\alpha = \frac{2\tan\alpha}{1 - \tan^2\alpha}\]
+                    </div>
+                    <div class="derivation-content">
+                        <h5>📝 導出方法</h5>
+                        <p>加法定理で \(\beta = \alpha\) とおく:</p>
+                        \[\sin 2\alpha = \sin(\alpha + \alpha) = \sin\alpha\cos\alpha + \cos\alpha\sin\alpha = 2\sin\alpha\cos\alpha\]
+                        \[\cos 2\alpha = \cos(\alpha + \alpha) = \cos\alpha\cos\alpha - \sin\alpha\sin\alpha = \cos^2\alpha - \sin^2\alpha\]
+                        <p>\(\sin^2\alpha + \cos^2\alpha = 1\) を使って変形:</p>
+                        \[\cos 2\alpha = \cos^2\alpha - (1-\cos^2\alpha) = 2\cos^2\alpha - 1\]
+                        \[\cos 2\alpha = (1-\sin^2\alpha) - \sin^2\alpha = 1 - 2\sin^2\alpha\]
+                    </div>
+                </div>
+
+                <div class="formula-card derivation">
+                    <h4>半角の公式</h4>
+                    <div class="formula">
+                        \[\sin^2\frac{\alpha}{2} = \frac{1 - \cos\alpha}{2}\]
+                        \[\cos^2\frac{\alpha}{2} = \frac{1 + \cos\alpha}{2}\]
+                        \[\tan^2\frac{\alpha}{2} = \frac{1 - \cos\alpha}{1 + \cos\alpha}\]
+                    </div>
+                    <div class="derivation-content">
+                        <h5>📝 導出方法</h5>
+                        <p>2倍角の公式 \(\cos 2\theta = 1 - 2\sin^2\theta\) で \(\theta = \frac{\alpha}{2}\) とおく:</p>
+                        \[\cos\alpha = 1 - 2\sin^2\frac{\alpha}{2}\]
+                        \[2\sin^2\frac{\alpha}{2} = 1 - \cos\alpha\]
+                        \[\sin^2\frac{\alpha}{2} = \frac{1 - \cos\alpha}{2}\]
+                        <p>同様に \(\cos 2\theta = 2\cos^2\theta - 1\) から:</p>
+                        \[\cos\alpha = 2\cos^2\frac{\alpha}{2} - 1\]
+                        \[\cos^2\frac{\alpha}{2} = \frac{1 + \cos\alpha}{2}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\cos\theta = \frac{1}{3}\) のとき、\(\sin^2\frac{\theta}{2}\) の値を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            半角の公式より<br>
+                            \[\sin^2\frac{\theta}{2} = \frac{1 - \cos\theta}{2} = \frac{1 - \frac{1}{3}}{2} = \frac{\frac{2}{3}}{2} = \frac{1}{3}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card derivation">
+                    <h4>積和の公式</h4>
+                    <div class="formula">
+                        \[\sin\alpha\cos\beta = \frac{1}{2}\{\sin(\alpha+\beta) + \sin(\alpha-\beta)\}\]
+                        \[\cos\alpha\sin\beta = \frac{1}{2}\{\sin(\alpha+\beta) - \sin(\alpha-\beta)\}\]
+                        \[\cos\alpha\cos\beta = \frac{1}{2}\{\cos(\alpha+\beta) + \cos(\alpha-\beta)\}\]
+                        \[\sin\alpha\sin\beta = -\frac{1}{2}\{\cos(\alpha+\beta) - \cos(\alpha-\beta)\}\]
+                    </div>
+                    <div class="derivation-content">
+                        <h5>📝 導出方法</h5>
+                        <p>加法定理から:</p>
+                        \[\sin(\alpha+\beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta \quad \cdots①\]
+                        \[\sin(\alpha-\beta) = \sin\alpha\cos\beta - \cos\alpha\sin\beta \quad \cdots②\]
+                        <p>①+②:</p>
+                        \[\sin(\alpha+\beta) + \sin(\alpha-\beta) = 2\sin\alpha\cos\beta\]
+                        \[\therefore \sin\alpha\cos\beta = \frac{1}{2}\{\sin(\alpha+\beta) + \sin(\alpha-\beta)\}\]
+                        <p>①-②:</p>
+                        \[\sin(\alpha+\beta) - \sin(\alpha-\beta) = 2\cos\alpha\sin\beta\]
+                        \[\therefore \cos\alpha\sin\beta = \frac{1}{2}\{\sin(\alpha+\beta) - \sin(\alpha-\beta)\}\]
+                        <p>同様にcosの加法定理から他の公式も導出できます。</p>
+                    </div>
+                </div>
+
+                <div class="formula-card derivation">
+                    <h4>和積の公式</h4>
+                    <div class="formula">
+                        \[\sin A + \sin B = 2\sin\frac{A+B}{2}\cos\frac{A-B}{2}\]
+                        \[\sin A - \sin B = 2\cos\frac{A+B}{2}\sin\frac{A-B}{2}\]
+                        \[\cos A + \cos B = 2\cos\frac{A+B}{2}\cos\frac{A-B}{2}\]
+                        \[\cos A - \cos B = -2\sin\frac{A+B}{2}\sin\frac{A-B}{2}\]
+                    </div>
+                    <div class="derivation-content">
+                        <h5>📝 導出方法</h5>
+                        <p>積和の公式で \(\alpha = \frac{A+B}{2}\), \(\beta = \frac{A-B}{2}\) とおくと:</p>
+                        \[\alpha + \beta = A, \quad \alpha - \beta = B\]
+                        <p>積和の公式に代入:</p>
+                        \[\sin\alpha\cos\beta = \frac{1}{2}\{\sin A + \sin B\}\]
+                        \[\therefore \sin A + \sin B = 2\sin\frac{A+B}{2}\cos\frac{A-B}{2}\]
+                        <p>他の公式も同様に導出できます。</p>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>三角関数の合成</h4>
+                    <div class="formula">
+                        \[a\sin\theta + b\cos\theta = \sqrt{a^2+b^2}\sin(\theta + \alpha)\]
+                        \[\text{ただし } \cos\alpha = \frac{a}{\sqrt{a^2+b^2}}, \quad \sin\alpha = \frac{b}{\sqrt{a^2+b^2}}\]
+                        <p>または:</p>
+                        \[a\sin\theta + b\cos\theta = \sqrt{a^2+b^2}\cos(\theta - \beta)\]
+                        \[\text{ただし } \sin\beta = \frac{a}{\sqrt{a^2+b^2}}, \quad \cos\beta = \frac{b}{\sqrt{a^2+b^2}}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\sin\theta + \sqrt{3}\cos\theta\) を \(r\sin(\theta + \alpha)\) の形に合成せよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(a=1, b=\sqrt{3}\)<br>
+                            \(r = \sqrt{1^2 + (\sqrt{3})^2} = \sqrt{1+3} = 2\)<br>
+                            \(\cos\alpha = \frac{1}{2}, \sin\alpha = \frac{\sqrt{3}}{2}\) より \(\alpha = \frac{\pi}{3}\)<br>
+                            \[\therefore \sin\theta + \sqrt{3}\cos\theta = 2\sin\left(\theta + \frac{\pi}{3}\right)\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>三角関数の値（特殊角）</h4>
+                    <div class="formula">
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                            <tr style="background: #f1f5f9;">
+                                <th style="border: 1px solid #cbd5e1; padding: 0.5rem;">\(\theta\)</th>
+                                <th style="border: 1px solid #cbd5e1; padding: 0.5rem;">0°</th>
+                                <th style="border: 1px solid #cbd5e1; padding: 0.5rem;">30°</th>
+                                <th style="border: 1px solid #cbd5e1; padding: 0.5rem;">45°</th>
+                                <th style="border: 1px solid #cbd5e1; padding: 0.5rem;">60°</th>
+                                <th style="border: 1px solid #cbd5e1; padding: 0.5rem;">90°</th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem; background: #f1f5f9;">\(\sin\theta\)</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">0</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">\(\frac{1}{2}\)</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">\(\frac{\sqrt{2}}{2}\)</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">\(\frac{\sqrt{3}}{2}\)</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">1</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem; background: #f1f5f9;">\(\cos\theta\)</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">1</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">\(\frac{\sqrt{3}}{2}\)</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">\(\frac{\sqrt{2}}{2}\)</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">\(\frac{1}{2}\)</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">0</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem; background: #f1f5f9;">\(\tan\theta\)</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">0</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">\(\frac{\sqrt{3}}{3}\)</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">1</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">\(\sqrt{3}\)</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 0.5rem;">—</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 指数関数と対数関数 -->
+            <div class="category">
+                <h3>📌 指数関数と対数関数</h3>
+                
+                <div class="formula-card">
+                    <h4>指数法則</h4>
+                    <div class="formula">
+                        \[a^m \cdot a^n = a^{m+n}\]
+                        \[(a^m)^n = a^{mn}\]
+                        \[(ab)^n = a^n b^n\]
+                        \[\frac{a^m}{a^n} = a^{m-n}\]
+                        \[a^0 = 1 \quad (a \neq 0)\]
+                        \[a^{-n} = \frac{1}{a^n}\]
+                        \[a^{\frac{1}{n}} = \sqrt[n]{a}\]
+                        \[a^{\frac{m}{n}} = \sqrt[n]{a^m} = (\sqrt[n]{a})^m\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(2^3 \cdot 2^5 \div 2^4\) を計算せよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[2^3 \cdot 2^5 \div 2^4 = 2^{3+5-4} = 2^4 = 16\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>対数の定義</h4>
+                    <div class="formula">
+                        \[a^p = M \Leftrightarrow p = \log_a M\]
+                        \[a > 0, a \neq 1, M > 0\]
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>対数の性質</h4>
+                    <div class="formula">
+                        \[\log_a 1 = 0\]
+                        \[\log_a a = 1\]
+                        \[\log_a MN = \log_a M + \log_a N\]
+                        \[\log_a \frac{M}{N} = \log_a M - \log_a N\]
+                        \[\log_a M^k = k\log_a M\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\log_2 8 + \log_2 4 - \log_2 16\) を計算せよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\log_2 8 + \log_2 4 - \log_2 16 = \log_2 \frac{8 \times 4}{16}\]
+                            \[= \log_2 2 = 1\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>底の変換公式</h4>
+                    <div class="formula">
+                        \[\log_a b = \frac{\log_c b}{\log_c a}\]
+                        \[\log_a b = \frac{1}{\log_b a}\]
+                        \[\log_a b \cdot \log_b c = \log_a c\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\log_4 8\) を \(\log_2\) で表せ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            底の変換公式より<br>
+                            \[\log_4 8 = \frac{\log_2 8}{\log_2 4} = \frac{3}{2}\]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 微分・積分 -->
+            <div class="category">
+                <h3>📌 微分・積分</h3>
+                
+                <div class="formula-card">
+                    <h4>微分の定義</h4>
+                    <div class="formula">
+                        \[f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(f(x) = x^2\) の導関数を微分の定義から求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[f'(x) = \lim_{h \to 0} \frac{(x+h)^2 - x^2}{h}\]
+                            \[= \lim_{h \to 0} \frac{x^2 + 2xh + h^2 - x^2}{h}\]
+                            \[= \lim_{h \to 0} \frac{2xh + h^2}{h} = \lim_{h \to 0} (2x + h) = 2x\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>基本的な微分公式</h4>
+                    <div class="formula">
+                        \[(x^n)' = nx^{n-1}\]
+                        \[(c)' = 0 \quad (c\text{は定数})\]
+                        \[\{cf(x)\}' = cf'(x)\]
+                        \[\{f(x) \pm g(x)\}' = f'(x) \pm g'(x)\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(f(x) = 3x^4 - 2x^2 + 5\) の導関数を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[f'(x) = 3 \cdot 4x^3 - 2 \cdot 2x + 0 = 12x^3 - 4x\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>積と商の微分</h4>
+                    <div class="formula">
+                        \[\{f(x)g(x)\}' = f'(x)g(x) + f(x)g'(x)\]
+                        \[\left\{\frac{f(x)}{g(x)}\right\}' = \frac{f'(x)g(x) - f(x)g'(x)}{\{g(x)\}^2}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(y = x^2(x+1)\) の導関数を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            積の微分公式より<br>
+                            \[y' = (x^2)'(x+1) + x^2(x+1)'\]
+                            \[= 2x(x+1) + x^2 \cdot 1\]
+                            \[= 2x^2 + 2x + x^2 = 3x^2 + 2x\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>合成関数の微分</h4>
+                    <div class="formula">
+                        \[\{f(g(x))\}' = f'(g(x)) \cdot g'(x)\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(y = (2x+1)^3\) の導関数を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(f(u) = u^3\), \(g(x) = 2x+1\) とすると<br>
+                            \[y' = 3(2x+1)^2 \cdot 2 = 6(2x+1)^2\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>接線の方程式</h4>
+                    <div class="formula">
+                        \[y - f(a) = f'(a)(x - a)\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 曲線 \(y = x^2\) 上の点 \((2, 4)\) における接線の方程式を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(f(x) = x^2\) より \(f'(x) = 2x\)<br>
+                            \(x=2\) のとき \(f'(2) = 4\)<br>
+                            接線の方程式:<br>
+                            \[y - 4 = 4(x - 2)\]
+                            \[y = 4x - 4\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>基本的な積分公式</h4>
+                    <div class="formula">
+                        \[\int x^n dx = \frac{1}{n+1}x^{n+1} + C \quad (n \neq -1)\]
+                        \[\int k dx = kx + C \quad (k\text{は定数})\]
+                        \[\int \{f(x) \pm g(x)\} dx = \int f(x)dx \pm \int g(x)dx\]
+                        \[\int kf(x)dx = k\int f(x)dx\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\int (3x^2 - 2x + 1) dx\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\int (3x^2 - 2x + 1) dx = 3 \cdot \frac{x^3}{3} - 2 \cdot \frac{x^2}{2} + x + C = x^3 - x^2 + x + C\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>定積分の性質</h4>
+                    <div class="formula">
+                        \[\int_a^b f(x)dx = \left[F(x)\right]_a^b = F(b) - F(a)\]
+                        \[\int_a^b f(x)dx = -\int_b^a f(x)dx\]
+                        \[\int_a^b f(x)dx = \int_a^c f(x)dx + \int_c^b f(x)dx\]
+                        \[\int_a^b \{f(x) \pm g(x)\}dx = \int_a^b f(x)dx \pm \int_a^b g(x)dx\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\int_1^3 (2x + 1) dx\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\int_1^3 (2x + 1) dx = \left[x^2 + x\right]_1^3 = (9 + 3) - (1 + 1) = 12 - 2 = 10\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>定積分と面積</h4>
+                    <div class="formula">
+                        <p>\(y = f(x)\) と \(x\) 軸、\(x=a\), \(x=b\) で囲まれた面積:</p>
+                        \[S = \int_a^b |f(x)|dx\]
+                        <p>2つの曲線で囲まれた面積:</p>
+                        \[S = \int_a^b |f(x) - g(x)|dx\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(y = x^2\) と \(y = 2x\) で囲まれた面積を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            交点: \(x^2 = 2x\) より \(x = 0, 2\)<br>
+                            \[S = \int_0^2 (2x - x^2) dx = \left[x^2 - \frac{x^3}{3}\right]_0^2\]
+                            \[= \left(4 - \frac{8}{3}\right) - 0 = \frac{4}{3}\]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 数列 -->
+            <div class="category">
+                <h3>📌 数列</h3>
+                
+                <div class="formula-card">
+                    <h4>等差数列</h4>
+                    <div class="formula">
+                        <p>一般項:</p>
+                        \[a_n = a + (n-1)d\]
+                        <p>和:</p>
+                        \[S_n = \frac{n(a+l)}{2} = \frac{n\{2a+(n-1)d\}}{2}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 初項3、公差2の等差数列の第10項と初項から第10項までの和を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            第10項: \(a_{10} = 3 + (10-1) \times 2 = 3 + 18 = 21\)<br>
+                            和: \[S_{10} = \frac{10(3 + 21)}{2} = \frac{10 \times 24}{2} = 120\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>等比数列</h4>
+                    <div class="formula">
+                        <p>一般項:</p>
+                        \[a_n = ar^{n-1}\]
+                        <p>和:</p>
+                        \[S_n = \begin{cases} 
+                        \frac{a(1-r^n)}{1-r} = \frac{a(r^n-1)}{r-1} & (r \neq 1) \\
+                        na & (r = 1)
+                        \end{cases}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 初項2、公比3の等比数列の初項から第5項までの和を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[S_5 = \frac{2(3^5 - 1)}{3 - 1} = \frac{2(243 - 1)}{2} = \frac{2 \times 242}{2} = 242\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>Σの公式</h4>
+                    <div class="formula">
+                        \[\sum_{k=1}^n k = \frac{n(n+1)}{2}\]
+                        \[\sum_{k=1}^n k^2 = \frac{n(n+1)(2n+1)}{6}\]
+                        \[\sum_{k=1}^n k^3 = \left\{\frac{n(n+1)}{2}\right\}^2\]
+                        \[\sum_{k=1}^n c = nc \quad (c\text{は定数})\]
+                        \[\sum_{k=1}^n r^{k-1} = \frac{1-r^n}{1-r} \quad (r \neq 1)\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\sum_{k=1}^{10} k^2\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\sum_{k=1}^{10} k^2 = \frac{10 \times 11 \times 21}{6} = \frac{2310}{6} = 385\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>階差数列</h4>
+                    <div class="formula">
+                        \[a_n = a_1 + \sum_{k=1}^{n-1} b_k \quad (n \geq 2)\]
+                        <p class="description">\(b_k = a_{k+1} - a_k\) が階差数列</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 数列 \(\{a_n\}\) の階差数列が \(b_n = 2n\) で \(a_1 = 1\) のとき、\(a_n\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(n \geq 2\) のとき<br>
+                            \[a_n = a_1 + \sum_{k=1}^{n-1} 2k = 1 + 2 \cdot \frac{(n-1)n}{2}\]
+                            \[= 1 + n(n-1) = n^2 - n + 1\]
+                            (\(n=1\) のとき \(a_1 = 1\) も満たす)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>漸化式</h4>
+                    <div class="formula">
+                        <p>\(a_{n+1} = pa_n + q\) 型:</p>
+                        \[a_{n+1} - \alpha = p(a_n - \alpha)\]
+                        \[\text{ただし } \alpha = \frac{q}{1-p}\]
+                        <p>\(a_{n+1} = pa_n + q^n\) 型は両辺を \(p^{n+1}\) で割る</p>
+                        <p>\(a_{n+2} = pa_{n+1} + qa_n\) 型（特性方程式）:</p>
+                        \[x^2 = px + q \text{ の解を } \alpha, \beta \text{ とすると}\]
+                        \[a_n = A\alpha^n + B\beta^n\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(a_1 = 2\), \(a_{n+1} = 3a_n - 4\) で定まる数列 \(\{a_n\}\) の一般項を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(\alpha = \frac{-4}{1-3} = 2\) より<br>
+                            \(a_{n+1} - 2 = 3(a_n - 2)\)<br>
+                            \(\{a_n - 2\}\) は初項 \(a_1 - 2 = 0\)、公比3の等比数列<br>
+                            \[a_n - 2 = 0 \times 3^{n-1} = 0\]
+                            \[\therefore a_n = 2\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>数学的帰納法</h4>
+                    <div class="formula">
+                        <p>すべての自然数 \(n\) について命題 \(P(n)\) が成り立つことの証明:</p>
+                        <ol style="padding-left: 2rem; margin-top: 0.5rem;">
+                            <li>\(n=1\) のとき \(P(1)\) が成り立つ</li>
+                            <li>\(n=k\) のとき \(P(k)\) が成り立つと仮定すると、\(n=k+1\) のとき \(P(k+1)\) も成り立つ</li>
+                        </ol>
+                        <p class="description">この2つが示されれば、すべての自然数 \(n\) について \(P(n)\) が成り立つ</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ベクトル -->
+            <div class="category">
+                <h3>📌 ベクトル</h3>
+                
+                <div class="formula-card">
+                    <h4>ベクトルの演算</h4>
+                    <div class="formula">
+                        \[\vec{a} + \vec{b} = (a_1+b_1, a_2+b_2)\]
+                        \[k\vec{a} = (ka_1, ka_2)\]
+                        \[|\vec{a}| = \sqrt{a_1^2 + a_2^2}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\vec{a} = (3, 4)\) のとき、\(|\vec{a}|\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[|\vec{a}| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>内積</h4>
+                    <div class="formula">
+                        \[\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}|\cos\theta\]
+                        \[\vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2\]
+                        \[\vec{a} \perp \vec{b} \Leftrightarrow \vec{a} \cdot \vec{b} = 0\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\vec{a} = (2, 3)\), \(\vec{b} = (4, -1)\) のとき、\(\vec{a} \cdot \vec{b}\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\vec{a} \cdot \vec{b} = 2 \times 4 + 3 \times (-1) = 8 - 3 = 5\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>位置ベクトル</h4>
+                    <div class="formula">
+                        <p>内分点:</p>
+                        \[\vec{p} = \frac{n\vec{a} + m\vec{b}}{m+n}\]
+                        <p>外分点:</p>
+                        \[\vec{p} = \frac{-n\vec{a} + m\vec{b}}{m-n}\]
+                        <p>重心:</p>
+                        \[\vec{g} = \frac{\vec{a} + \vec{b} + \vec{c}}{3}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 点A(1,2)、点B(4,6)を2:1に内分する点Pの位置ベクトルを求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(m=2, n=1\) として<br>
+                            \[\vec{p} = \frac{1 \cdot (1,2) + 2 \cdot (4,6)}{2+1}\]
+                            \[= \frac{(1,2) + (8,12)}{3} = \frac{(9,14)}{3} = (3, \frac{14}{3})\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>直線のベクトル方程式</h4>
+                    <div class="formula">
+                        \[\vec{p} = \vec{a} + t\vec{d}\]
+                        <p class="description">\(\vec{a}\): 通る点、\(\vec{d}\): 方向ベクトル</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 点A(2,1)を通り、\(\vec{d} = (3,4)\) 方向の直線の方程式を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\vec{p} = (2,1) + t(3,4) = (2+3t, 1+4t)\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>平面のベクトル方程式</h4>
+                    <div class="formula">
+                        \[\vec{p} = s\vec{a} + t\vec{b}\]
+                        \[\vec{p} = \vec{a} + s\vec{b} + t\vec{c}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 点A(1,0,0)を通り、\(\vec{b} = (0,1,0)\), \(\vec{c} = (0,0,1)\) に平行な平面の方程式を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\vec{p} = (1,0,0) + s(0,1,0) + t(0,0,1)\]
+                            \[= (1, s, t)\]
+                            これより \(x = 1\)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>空間ベクトル</h4>
+                    <div class="formula">
+                        \[|\vec{a}| = \sqrt{a_1^2 + a_2^2 + a_3^2}\]
+                        \[\vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2 + a_3b_3\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\vec{a} = (1, 2, 2)\) のとき、\(|\vec{a}|\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[|\vec{a}| = \sqrt{1^2 + 2^2 + 2^2} = \sqrt{1 + 4 + 4} = \sqrt{9} = 3\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>ベクトルの外積（空間）</h4>
+                    <div class="formula">
+                        \[\vec{a} \times \vec{b} = (a_2b_3 - a_3b_2, a_3b_1 - a_1b_3, a_1b_2 - a_2b_1)\]
+                        <p class="description">外積の大きさ: \(|\vec{a} \times \vec{b}| = |\vec{a}||\vec{b}|\sin\theta\)</p>
+                        <p class="description">\(\vec{a} \times \vec{b}\) は \(\vec{a}\) と \(\vec{b}\) の両方に垂直</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\vec{a} = (1,2,3)\), \(\vec{b} = (4,5,6)\) の外積を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\vec{a} \times \vec{b} = (2 \times 6 - 3 \times 5, 3 \times 4 - 1 \times 6, 1 \times 5 - 2 \times 4)\]
+                            \[= (12-15, 12-6, 5-8) = (-3, 6, -3)\]
+                        </div>
+                    </div>
+                </div>                </div>
+
+                <div class="formula-card">
+                    <h4>平面の方程式（法線ベクトル）</h4>
+                    <div class="formula">
+                        <p>法線ベクトル \(\vec{n} = (a, b, c)\) を持つ平面:</p>
+                        \[a(x-x_0) + b(y-y_0) + c(z-z_0) = 0\]
+                        \[ax + by + cz + d = 0\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 点(1,2,3)を通り、法線ベクトル \(\vec{n} = (2,1,-1)\) の平面の方程式を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[2(x-1) + 1(y-2) + (-1)(z-3) = 0\]
+                            \[2x - 2 + y - 2 - z + 3 = 0\]
+                            \[2x + y - z - 1 = 0\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>点と平面の距離</h4>
+                    <div class="formula">
+                        <p>点 \((x_0, y_0, z_0)\) と平面 \(ax + by + cz + d = 0\) の距離:</p>
+                        \[h = \frac{|ax_0 + by_0 + cz_0 + d|}{\sqrt{a^2 + b^2 + c^2}}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 点(1,2,3)と平面 \(2x + y - z - 1 = 0\) の距離を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[h = \frac{|2 \times 1 + 1 \times 2 - 1 \times 3 - 1|}{\sqrt{2^2 + 1^2 + (-1)^2}}\]
+                            \[= \frac{|2 + 2 - 3 - 1|}{\sqrt{6}} = \frac{0}{\sqrt{6}} = 0\]
+                            (点は平面上にある)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 数学3C -->
+        <section id="math3c" class="math-section">
+            <h2>数学3C</h2>
+            
+            <!-- 極限 -->
+            <div class="category">
+                <h3>📌 極限</h3>
+                
+                <div class="formula-card">
+                    <h4>極限の性質</h4>
+                    <div class="formula">
+                        \[\lim_{x \to a} \{f(x) \pm g(x)\} = \lim_{x \to a} f(x) \pm \lim_{x \to a} g(x)\]
+                        \[\lim_{x \to a} kf(x) = k\lim_{x \to a} f(x)\]
+                        \[\lim_{x \to a} f(x)g(x) = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)\]
+                        \[\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\lim_{x \to 2} (3x^2 + 2x - 1)\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\lim_{x \to 2} (3x^2 + 2x - 1) = 3 \times 2^2 + 2 \times 2 - 1\]
+                            \[= 12 + 4 - 1 = 15\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>重要な極限</h4>
+                    <div class="formula">
+                        \[\lim_{x \to 0} \frac{\sin x}{x} = 1\]
+                        \[\lim_{x \to 0} \frac{\tan x}{x} = 1\]
+                        \[\lim_{x \to 0} \frac{1 - \cos x}{x} = 0\]
+                        \[\lim_{x \to 0} \frac{1 - \cos x}{x^2} = \frac{1}{2}\]
+                        \[\lim_{x \to 0} (1+x)^{\frac{1}{x}} = e\]
+                        \[\lim_{x \to \infty} \left(1+\frac{1}{x}\right)^x = e\]
+                        \[\lim_{x \to 0} \frac{e^x - 1}{x} = 1\]
+                        \[\lim_{x \to 0} \frac{\log(1+x)}{x} = 1\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\lim_{x \to 0} \frac{\sin 3x}{x}\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\lim_{x \to 0} \frac{\sin 3x}{x} = \lim_{x \to 0} \frac{\sin 3x}{3x} \cdot 3 = 1 \cdot 3 = 3\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>はさみうちの原理</h4>
+                    <div class="formula">
+                        \[f(x) \leq g(x) \leq h(x)\]
+                        \[\lim_{x \to a} f(x) = \lim_{x \to a} h(x) = \alpha\]
+                        \[\text{のとき } \lim_{x \to a} g(x) = \alpha\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\lim_{n \to \infty} \frac{\sin n}{n}\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(-1 \leq \sin n \leq 1\) より<br>
+                            \[-\frac{1}{n} \leq \frac{\sin n}{n} \leq \frac{1}{n}\]<br>
+                            \(\lim_{n \to \infty} \frac{1}{n} = 0\) なので、はさみうちの原理より<br>
+                            \[\lim_{n \to \infty} \frac{\sin n}{n} = 0\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>ロピタルの定理</h4>
+                    <div class="formula">
+                        \[\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{0}{0} \text{ または } \frac{\infty}{\infty} \text{ の不定形のとき}\]
+                        \[\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}\]
+                        <p class="description">（右辺の極限が存在する場合）</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\lim_{x \to 0} \frac{e^x - 1}{x}\) をロピタルの定理で求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(\frac{0}{0}\) 型の不定形なので<br>
+                            \[\lim_{x \to 0} \frac{e^x - 1}{x} = \lim_{x \to 0} \frac{(e^x)'}{(x)'} = \lim_{x \to 0} \frac{e^x}{1} = 1\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>無限級数</h4>
+                    <div class="formula">
+                        <p>無限等比級数:</p>
+                        \[\sum_{n=1}^{\infty} ar^{n-1} = \frac{a}{1-r} \quad (|r| < 1)\]
+                        <p>収束条件: \(|r| < 1\)</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\sum_{n=1}^{\infty} \frac{1}{2^n}\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            初項 \(a = \frac{1}{2}\)、公比 \(r = \frac{1}{2}\) の無限等比級数<br>
+                            \(|r| = \frac{1}{2} < 1\) より収束する<br>
+                            \[\sum_{n=1}^{\infty} \frac{1}{2^n} = \frac{1/2}{1-1/2} = \frac{1/2}{1/2} = 1\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>テイラー展開・マクローリン展開</h4>
+                    <div class="formula">
+                        <p>テイラー展開:</p>
+                        \[f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n + \cdots\]
+                        <p>マクローリン展開（\(a=0\) の場合）:</p>
+                        \[f(x) = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \cdots + \frac{f^{(n)}(0)}{n!}x^n + \cdots\]
+                        <p>主な関数のマクローリン展開:</p>
+                        \[e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots\]
+                        \[\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots\]
+                        \[\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots\]
+                        \[\log(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots \quad (|x| < 1)\]
+                    </div>
+                </div>
+            </div>
+
+            <!-- 微分法 -->
+            <div class="category">
+                <h3>📌 微分法</h3>
+                
+                <div class="formula-card">
+                    <h4>三角関数の微分</h4>
+                    <div class="formula">
+                        \[(\sin x)' = \cos x\]
+                        \[(\cos x)' = -\sin x\]
+                        \[(\tan x)' = \frac{1}{\cos^2 x}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(y = \sin 2x\) の導関数を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            合成関数の微分より<br>
+                            \[y' = \cos 2x \cdot (2x)' = 2\cos 2x\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>指数関数・対数関数の微分</h4>
+                    <div class="formula">
+                        \[(e^x)' = e^x\]
+                        \[(a^x)' = a^x \log a\]
+                        \[(\log x)' = \frac{1}{x}\]
+                        \[(\log_a x)' = \frac{1}{x \log a}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(y = e^{2x}\) の導関数を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            合成関数の微分より<br>
+                            \[y' = e^{2x} \cdot (2x)' = 2e^{2x}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>対数微分法</h4>
+                    <div class="formula">
+                        \[y = f(x)^{g(x)} \text{ のとき}\]
+                        \[\log y = g(x) \log f(x)\]
+                        \[\frac{y'}{y} = g'(x)\log f(x) + g(x) \cdot \frac{f'(x)}{f(x)}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(y = x^x\) の導関数を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            両辺の対数をとると<br>
+                            \(\log y = x \log x\)<br>
+                            両辺を \(x\) で微分<br>
+                            \(\frac{y'}{y} = \log x + x \cdot \frac{1}{x} = \log x + 1\)<br>
+                            \[y' = y(\log x + 1) = x^x(\log x + 1)\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>高次導関数</h4>
+                    <div class="formula">
+                        \[(x^n)^{(k)} = n(n-1)\cdots(n-k+1)x^{n-k}\]
+                        \[(e^{ax})^{(n)} = a^n e^{ax}\]
+                        \[(\sin ax)^{(n)} = a^n \sin\left(ax + \frac{n\pi}{2}\right)\]
+                        \[(\cos ax)^{(n)} = a^n \cos\left(ax + \frac{n\pi}{2}\right)\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(y = e^{3x}\) の第2次導関数を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[y^{(2)} = 3^2 e^{3x} = 9e^{3x}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>ライプニッツの公式</h4>
+                    <div class="formula">
+                        \[\{f(x)g(x)\}^{(n)} = \sum_{k=0}^n {}_nC_k f^{(k)}(x)g^{(n-k)}(x)\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(y = x^2 e^x\) の第2次導関数を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(f(x) = x^2\), \(g(x) = e^x\) として<br>
+                            \(f'(x) = 2x\), \(f''(x) = 2\), \(g'(x) = e^x\), \(g''(x) = e^x\)<br>
+                            \[y'' = {}_2C_0 f^{(0)}g^{(2)} + {}_2C_1 f^{(1)}g^{(1)} + {}_2C_2 f^{(2)}g^{(0)}\]
+                            \[= x^2 e^x + 2 \cdot 2x \cdot e^x + 2e^x = (x^2 + 4x + 2)e^x\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>平均値の定理</h4>
+                    <div class="formula">
+                        \[\frac{f(b) - f(a)}{b - a} = f'(c) \quad (a < c < b)\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(f(x) = x^2\) において、\([1, 3]\) で平均値の定理を満たす \(c\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(f'(x) = 2x\), \(f(3) = 9\), \(f(1) = 1\)<br>
+                            \[\frac{9 - 1}{3 - 1} = 2c\]
+                            \[4 = 2c\]
+                            \[c = 2\]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 積分法 -->
+            <div class="category">
+                <h3>📌 積分法</h3>
+                
+                <div class="formula-card">
+                    <h4>三角関数の積分</h4>
+                    <div class="formula">
+                        \[\int \sin x dx = -\cos x + C\]
+                        \[\int \cos x dx = \sin x + C\]
+                        \[\int \tan x dx = -\log|\cos x| + C\]
+                        \[\int \frac{1}{\cos^2 x} dx = \tan x + C\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\int \sin 2x dx\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(t = 2x\) とすると \(dt = 2dx\) より \(dx = \frac{1}{2}dt\)<br>
+                            \[\int \sin 2x dx = \int \sin t \cdot \frac{1}{2}dt = -\frac{1}{2}\cos t + C = -\frac{1}{2}\cos 2x + C\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>指数関数・対数関数の積分</h4>
+                    <div class="formula">
+                        \[\int e^x dx = e^x + C\]
+                        \[\int a^x dx = \frac{a^x}{\log a} + C\]
+                        \[\int \frac{1}{x} dx = \log|x| + C\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\int e^{3x} dx\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(t = 3x\) とすると \(dt = 3dx\) より \(dx = \frac{1}{3}dt\)<br>
+                            \[\int e^{3x} dx = \int e^t \cdot \frac{1}{3}dt = \frac{1}{3}e^t + C = \frac{1}{3}e^{3x} + C\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>部分積分法</h4>
+                    <div class="formula">
+                        \[\int f(x)g'(x)dx = f(x)g(x) - \int f'(x)g(x)dx\]
+                        \[\int_a^b f(x)g'(x)dx = \left[f(x)g(x)\right]_a^b - \int_a^b f'(x)g(x)dx\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\int x e^x dx\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(f(x) = x\), \(g'(x) = e^x\) とすると<br>
+                            \(f'(x) = 1\), \(g(x) = e^x\)<br>
+                            \[\int x e^x dx = x e^x - \int 1 \cdot e^x dx\]
+                            \[= xe^x - e^x + C = (x-1)e^x + C\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>置換積分法</h4>
+                    <div class="formula">
+                        \[\int f(g(x))g'(x)dx = \int f(t)dt \quad (t = g(x))\]
+                        \[\int_a^b f(g(x))g'(x)dx = \int_{g(a)}^{g(b)} f(t)dt\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\int 2x(x^2+1)^3 dx\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(t = x^2+1\) とすると \(\frac{dt}{dx} = 2x\) より \(dt = 2x dx\)<br>
+                            \[\int 2x(x^2+1)^3 dx = \int t^3 dt = \frac{t^4}{4} + C = \frac{(x^2+1)^4}{4} + C\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>定積分の応用</h4>
+                    <div class="formula">
+                        <p>回転体の体積（\(x\)軸周り）:</p>
+                        \[V = \pi\int_a^b \{f(x)\}^2 dx\]
+                        <p>回転体の体積（\(y\)軸周り）:</p>
+                        \[V = 2\pi\int_a^b x|f(x)| dx\]
+                        <p>曲線の長さ:</p>
+                        \[L = \int_a^b \sqrt{1 + \{f'(x)\}^2} dx\]
+                        <p>媒介変数表示の曲線の長さ:</p>
+                        \[L = \int_{\alpha}^{\beta} \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} dt\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(y = x\) (\(0 \leq x \leq 2\)) を \(x\)軸周りに回転させた体積を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[V = \pi\int_0^2 x^2 dx = \pi\left[\frac{x^3}{3}\right]_0^2\]
+                            \[= \pi \cdot \frac{8}{3} = \frac{8\pi}{3}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>区分求積法</h4>
+                    <div class="formula">
+                        \[\lim_{n \to \infty} \frac{1}{n}\sum_{k=1}^n f\left(\frac{k}{n}\right) = \int_0^1 f(x)dx\]
+                        <p>一般に:</p>
+                        \[\lim_{n \to \infty} \frac{b-a}{n}\sum_{k=1}^n f\left(a + \frac{k(b-a)}{n}\right) = \int_a^b f(x)dx\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\lim_{n \to \infty} \frac{1}{n}\sum_{k=1}^n \frac{k}{n}\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\lim_{n \to \infty} \frac{1}{n}\sum_{k=1}^n \frac{k}{n} = \int_0^1 x dx\]
+                            \[= \left[\frac{x^2}{2}\right]_0^1 = \frac{1}{2}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>よく使う積分公式</h4>
+                    <div class="formula">
+                        \[\int \frac{1}{x^2+a^2} dx = \frac{1}{a}\tan^{-1}\frac{x}{a} + C\]
+                        \[\int \frac{1}{\sqrt{a^2-x^2}} dx = \sin^{-1}\frac{x}{a} + C\]
+                        \[\int \frac{1}{\sqrt{x^2+a^2}} dx = \log|x + \sqrt{x^2+a^2}| + C\]
+                    </div>
+                </div>
+            </div>
+
+            <!-- 複素数平面 -->
+            <div class="category">
+                <h3>📌 複素数平面</h3>
+                
+                <div class="formula-card">
+                    <h4>複素数の基本</h4>
+                    <div class="formula">
+                        \[i^2 = -1\]
+                        \[z = a + bi \quad (a, b \text{ は実数})\]
+                        \[\overline{z} = a - bi \quad \text{(共役複素数)}\]
+                        \[|z| = \sqrt{a^2 + b^2} \quad \text{(絶対値)}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(z = 3 + 4i\) のとき、\(|z|\) と \(\overline{z}\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[|z| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5\]
+                            \[\overline{z} = 3 - 4i\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>複素数の演算</h4>
+                    <div class="formula">
+                        \[z + \overline{z} = 2a = 2\text{Re}(z)\]
+                        \[z - \overline{z} = 2bi = 2i\text{Im}(z)\]
+                        \[z\overline{z} = |z|^2 = a^2 + b^2\]
+                        \[|z_1z_2| = |z_1||z_2|\]
+                        \[\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(z = 2 + 3i\) のとき、\(z\overline{z}\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[z\overline{z} = |z|^2 = 2^2 + 3^2 = 4 + 9 = 13\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>極形式</h4>
+                    <div class="formula">
+                        \[z = r(\cos\theta + i\sin\theta) = re^{i\theta}\]
+                        <p class="description">\(r = |z|\), \(\theta = \arg z\)</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(z = 1 + i\) を極形式で表せ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(r = |z| = \sqrt{1^2 + 1^2} = \sqrt{2}\)<br>
+                            \(\tan\theta = \frac{1}{1} = 1\) より \(\theta = \frac{\pi}{4}\)<br>
+                            \[z = \sqrt{2}\left(\cos\frac{\pi}{4} + i\sin\frac{\pi}{4}\right) = \sqrt{2}e^{i\frac{\pi}{4}}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>ド・モアブルの定理</h4>
+                    <div class="formula">
+                        \[(\cos\theta + i\sin\theta)^n = \cos n\theta + i\sin n\theta\]
+                        \[(re^{i\theta})^n = r^n e^{in\theta}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \((1+i)^6\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(1+i = \sqrt{2}\left(\cos\frac{\pi}{4} + i\sin\frac{\pi}{4}\right)\)<br>
+                            ド・モアブルの定理より<br>
+                            \[(1+i)^6 = (\sqrt{2})^6\left(\cos\frac{6\pi}{4} + i\sin\frac{6\pi}{4}\right)\]
+                            \[= 8\left(\cos\frac{3\pi}{2} + i\sin\frac{3\pi}{2}\right) = 8(0 - i) = -8i\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>オイラーの公式</h4>
+                    <div class="formula">
+                        \[e^{i\theta} = \cos\theta + i\sin\theta\]
+                        \[e^{i\pi} + 1 = 0\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(e^{i\frac{\pi}{2}}\) を \(a + bi\) の形で表せ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[e^{i\frac{\pi}{2}} = \cos\frac{\pi}{2} + i\sin\frac{\pi}{2} = 0 + i = i\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>n乗根</h4>
+                    <div class="formula">
+                        \[z^n = w = r(\cos\theta + i\sin\theta) \text{ のとき}\]
+                        \[z = \sqrt[n]{r}\left(\cos\frac{\theta + 2k\pi}{n} + i\sin\frac{\theta + 2k\pi}{n}\right)\]
+                        \[(k = 0, 1, 2, \ldots, n-1)\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(z^3 = 8\) を満たす複素数 \(z\) を全て求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(8 = 8(\cos 0 + i\sin 0)\)<br>
+                            \[z = 2\left(\cos\frac{2k\pi}{3} + i\sin\frac{2k\pi}{3}\right) \quad (k=0,1,2)\]
+                            \(k=0\): \(z = 2\)<br>
+                            \(k=1\): \(z = 2\left(\cos\frac{2\pi}{3} + i\sin\frac{2\pi}{3}\right) = -1 + \sqrt{3}i\)<br>
+                            \(k=2\): \(z = 2\left(\cos\frac{4\pi}{3} + i\sin\frac{4\pi}{3}\right) = -1 - \sqrt{3}i\)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 式と曲線 -->
+            <div class="category">
+                <h3>📌 式と曲線</h3>
+                
+                <div class="formula-card">
+                    <h4>2次曲線 - 放物線</h4>
+                    <div class="formula">
+                        \[y^2 = 4px\]
+                        <p class="description">焦点: \((p, 0)\)、準線: \(x = -p\)</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 放物線 \(y^2 = 8x\) の焦点と準線を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(4p = 8\) より \(p = 2\)<br>
+                            焦点: \((2, 0)\)<br>
+                            準線: \(x = -2\)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>2次曲線 - 楕円</h4>
+                    <div class="formula">
+                        \[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \quad (a > b > 0)\]
+                        <p class="description">焦点: \((\pm c, 0)\) ただし \(c = \sqrt{a^2 - b^2}\)</p>
+                        <p class="description">離心率: \(e = \frac{c}{a}\)</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 楕円 \(\frac{x^2}{25} + \frac{y^2}{9} = 1\) の焦点を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(a^2 = 25, b^2 = 9\) より \(a = 5, b = 3\)<br>
+                            \(c = \sqrt{25 - 9} = \sqrt{16} = 4\)<br>
+                            焦点: \((\pm 4, 0)\)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>2次曲線 - 双曲線</h4>
+                    <div class="formula">
+                        \[\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\]
+                        <p class="description">焦点: \((\pm c, 0)\) ただし \(c = \sqrt{a^2 + b^2}\)</p>
+                        <p class="description">漸近線: \(y = \pm\frac{b}{a}x\)</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 双曲線 \(\frac{x^2}{9} - \frac{y^2}{16} = 1\) の焦点と漸近線を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(a^2 = 9, b^2 = 16\) より \(a = 3, b = 4\)<br>
+                            \(c = \sqrt{9 + 16} = 5\)<br>
+                            焦点: \((\pm 5, 0)\)<br>
+                            漸近線: \(y = \pm\frac{4}{3}x\)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>媒介変数表示</h4>
+                    <div class="formula">
+                        \[x = f(t), \quad y = g(t)\]
+                        <p>接線の傾き:</p>
+                        \[\frac{dy}{dx} = \frac{dy/dt}{dx/dt} = \frac{g'(t)}{f'(t)}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(x = t^2\), \(y = t^3\) で表される曲線上の点 \(t=2\) における接線の傾きを求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(\frac{dx}{dt} = 2t\), \(\frac{dy}{dt} = 3t^2\)<br>
+                            \[\frac{dy}{dx} = \frac{3t^2}{2t} = \frac{3t}{2}\]
+                            \(t=2\) のとき \(\frac{dy}{dx} = \frac{3 \times 2}{2} = 3\)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>極座標</h4>
+                    <div class="formula">
+                        \[x = r\cos\theta, \quad y = r\sin\theta\]
+                        \[r^2 = x^2 + y^2, \quad \tan\theta = \frac{y}{x}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 直交座標 \((1, \sqrt{3})\) を極座標で表せ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(r = \sqrt{1^2 + (\sqrt{3})^2} = \sqrt{1 + 3} = 2\)<br>
+                            \(\tan\theta = \frac{\sqrt{3}}{1} = \sqrt{3}\) より \(\theta = \frac{\pi}{3}\)<br>
+                            極座標: \(\left(2, \frac{\pi}{3}\right)\)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>極方程式の面積</h4>
+                    <div class="formula">
+                        \[S = \frac{1}{2}\int_{\alpha}^{\beta} r^2 d\theta\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(r = 2\cos\theta\) (\(0 \leq \theta \leq \pi\)) で囲まれた図形の面積を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[S = \frac{1}{2}\int_0^{\pi} (2\cos\theta)^2 d\theta = 2\int_0^{\pi} \cos^2\theta d\theta\]
+                            \[= 2\int_0^{\pi} \frac{1+\cos 2\theta}{2} d\theta = \int_0^{\pi} (1+\cos 2\theta) d\theta\]
+                            \[= \left[\theta + \frac{\sin 2\theta}{2}\right]_0^{\pi} = \pi\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>サイクロイド</h4>
+                    <div class="formula">
+                        <p>円が直線上を滑らずに転がるとき、円周上の定点の軌跡:</p>
+                        \[x = a(\theta - \sin\theta)\]
+                        \[y = a(1 - \cos\theta)\]
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>アステロイド</h4>
+                    <div class="formula">
+                        \[x = a\cos^3 t, \quad y = a\sin^3 t\]
+                        <p>または:</p>
+                        \[x^{\frac{2}{3}} + y^{\frac{2}{3}} = a^{\frac{2}{3}}\]
+                    </div>
+                </div>
+            </div>
+
+            <!-- 行列（数学C） -->
+            <div class="category">
+                <h3>📌 行列</h3>
+                
+                <div class="formula-card">
+                    <h4>行列の演算</h4>
+                    <div class="formula">
+                        <p>行列の和:</p>
+                        \[\begin{pmatrix} a & b \\ c & d \end{pmatrix} + \begin{pmatrix} e & f \\ g & h \end{pmatrix} = \begin{pmatrix} a+e & b+f \\ c+g & d+h \end{pmatrix}\]
+                        <p>スカラー倍:</p>
+                        \[k\begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} ka & kb \\ kc & kd \end{pmatrix}\]
+                        <p>行列の積:</p>
+                        \[\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} e & f \\ g & h \end{pmatrix} = \begin{pmatrix} ae+bg & af+bh \\ ce+dg & cf+dh \end{pmatrix}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}\begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix}\) を計算せよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}\begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix}\]
+                            \[= \begin{pmatrix} 1 \times 5 + 2 \times 7 & 1 \times 6 + 2 \times 8 \\ 3 \times 5 + 4 \times 7 & 3 \times 6 + 4 \times 8 \end{pmatrix}\]
+                            \[= \begin{pmatrix} 19 & 22 \\ 43 & 50 \end{pmatrix}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>単位行列と逆行列</h4>
+                    <div class="formula">
+                        <p>単位行列:</p>
+                        \[E = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\]
+                        <p>逆行列:</p>
+                        \[A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \text{ のとき}\]
+                        \[A^{-1} = \frac{1}{ad-bc}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}\]
+                        <p class="description">逆行列が存在する条件: \(|A| = ad - bc \neq 0\)</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(A = \begin{pmatrix} 2 & 1 \\ 3 & 2 \end{pmatrix}\) の逆行列を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(|A| = 2 \times 2 - 1 \times 3 = 1 \neq 0\) より逆行列が存在<br>
+                            \[A^{-1} = \frac{1}{1}\begin{pmatrix} 2 & -1 \\ -3 & 2 \end{pmatrix} = \begin{pmatrix} 2 & -1 \\ -3 & 2 \end{pmatrix}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>行列式</h4>
+                    <div class="formula">
+                        <p>2次正方行列:</p>
+                        \[\left|\begin{matrix} a & b \\ c & d \end{matrix}\right| = ad - bc\]
+                        <p>3次正方行列:</p>
+                        \[\left|\begin{matrix} a & b & c \\ d & e & f \\ g & h & i \end{matrix}\right| = aei + bfg + cdh - ceg - afh - bdi\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(\left|\begin{matrix} 2 & 3 \\ 1 & 4 \end{matrix}\right|\) を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\left|\begin{matrix} 2 & 3 \\ 1 & 4 \end{matrix}\right| = 2 \times 4 - 3 \times 1 = 8 - 3 = 5\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>1次変換</h4>
+                    <div class="formula">
+                        \[\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} x \\ y \end{pmatrix}\]
+                        <p>回転移動（原点周りに角\(\theta\)回転）:</p>
+                        \[\begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}\]
+                        <p>対称移動（\(x\)軸に関して）:</p>
+                        \[\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\]
+                        <p>拡大・縮小（\(x\)方向に\(p\)倍、\(y\)方向に\(q\)倍）:</p>
+                        \[\begin{pmatrix} p & 0 \\ 0 & q \end{pmatrix}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> 点(1, 0)を原点周りに90°回転させた点の座標を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(\theta = 90° = \frac{\pi}{2}\) より<br>
+                            \[\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\]
+                            よって点(0, 1)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>固有値と固有ベクトル</h4>
+                    <div class="formula">
+                        \[A\vec{x} = \lambda\vec{x}\]
+                        <p class="description">\(\lambda\): 固有値、\(\vec{x}\): 固有ベクトル</p>
+                        <p>固有値を求める:</p>
+                        \[|A - \lambda E| = 0\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> \(A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}\) の固有値を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\left|\begin{matrix} 3-\lambda & 1 \\ 1 & 3-\lambda \end{matrix}\right| = 0\]
+                            \[(3-\lambda)^2 - 1 = 0\]
+                            \[\lambda^2 - 6\lambda + 8 = 0\]
+                            \[(\lambda - 2)(\lambda - 4) = 0\]
+                            \[\lambda = 2, 4\]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 統計（数学C） -->
+            <div class="category">
+                <h3>📌 統計</h3>
+                
+                <div class="formula-card">
+                    <h4>平均値と中央値</h4>
+                    <div class="formula">
+                        <p>平均値:</p>
+                        \[\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n}\]
+                        <p>中央値: データを小さい順に並べたときの中央の値</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> データ 3, 5, 7, 9, 11 の平均値を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \[\bar{x} = \frac{3 + 5 + 7 + 9 + 11}{5} = \frac{35}{5} = 7\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>分散と標準偏差</h4>
+                    <div class="formula">
+                        <p>分散:</p>
+                        \[s^2 = \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2 = \frac{1}{n}\sum_{i=1}^n x_i^2 - \bar{x}^2\]
+                        <p>標準偏差:</p>
+                        \[s = \sqrt{s^2}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> データ 2, 4, 6 の分散を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(\bar{x} = \frac{2 + 4 + 6}{3} = 4\)<br>
+                            \[s^2 = \frac{1}{3}\{(2-4)^2 + (4-4)^2 + (6-4)^2\}\]
+                            \[= \frac{1}{3}(4 + 0 + 4) = \frac{8}{3}\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>共分散と相関係数</h4>
+                    <div class="formula">
+                        <p>共分散:</p>
+                        \[s_{xy} = \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})\]
+                        <p>相関係数:</p>
+                        \[r = \frac{s_{xy}}{s_x s_y}\]
+                        <p class="description">\(-1 \leq r \leq 1\)、\(|r|\) が1に近いほど強い相関</p>
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> データ \((x, y) = (1, 2), (2, 3), (3, 5)\) の相関係数を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(\bar{x} = 2, \bar{y} = \frac{10}{3}\)<br>
+                            \(s_x^2 = \frac{2}{3}, s_y^2 = \frac{14}{9}\)<br>
+                            \(s_{xy} = \frac{1}{3}\{(1-2)(2-\frac{10}{3}) + (2-2)(3-\frac{10}{3}) + (3-2)(5-\frac{10}{3})\}\)<br>
+                            \(= \frac{1}{3}(\frac{4}{3} + 0 + \frac{5}{3}) = 1\)<br>
+                            \[r = \frac{1}{\sqrt{\frac{2}{3}} \cdot \sqrt{\frac{14}{9}}} = \frac{1}{\sqrt{\frac{28}{27}}} \approx 0.98\]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-card">
+                    <h4>回帰直線</h4>
+                    <div class="formula">
+                        <p>\(y\) を \(x\) で予測する回帰直線:</p>
+                        \[y - \bar{y} = \frac{s_{xy}}{s_x^2}(x - \bar{x})\]
+                        <p>または:</p>
+                        \[y = ax + b, \quad a = \frac{s_{xy}}{s_x^2}, \quad b = \bar{y} - a\bar{x}\]
+                    </div>
+                    <div class="example-content">
+                        <h5>📚 例題</h5>
+                        <div class="example-problem">
+                            <strong>問:</strong> データ \((x, y) = (1, 3), (2, 5), (3, 7)\) の回帰直線を求めよ。
+                        </div>
+                        <div class="example-solution">
+                            <strong>解:</strong><br>
+                            \(\bar{x} = 2, \bar{y} = 5\)<br>
+                            \(s_x^2 = \frac{1}{3}[(1-2)^2 + (2-2)^2 + (3-2)^2] = \frac{2}{3}\)<br>
+                            \(s_{xy} = \frac{1}{3}[(1-2)(3-5) + (2-2)(5-5) + (3-2)(7-5)] = \frac{4}{3}\)<br>
+                            \(a = \frac{4/3}{2/3} = 2\)<br>
+                            \(b = 5 - 2 \times 2 = 1\)<br>
+                            \[y = 2x + 1\]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section終了: 数学3Cのセクション終わり -->
+    </main>
+    <!-- main終了: メインコンテンツ終わり -->
+
+    <footer>
+        <!-- footer: ページの下部（フッター）。著作権情報などを配置 -->
+        
+        <p>&copy; 2025 高校数学公式集 - 学生団体ProgramWave</p>
+        <!-- &copy;: コピーライト記号 © を表示 -->
+        
+        <p>各公式は理解を深めるため、導出方法も確認しましょう</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- 外部JavaScriptファイルの読み込み -->
+    <!-- bodyの最後に配置することで、HTML読み込み後に実行される -->
+</body>
+<!-- body終了 -->
+</html>
+<!-- html終了: ページ全体の終わり -->
